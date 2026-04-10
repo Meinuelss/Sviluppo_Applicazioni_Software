@@ -29,4 +29,4 @@ Inquinamento da Regole di Business (L'errore più grave): Nelle descrizioni brev
 Perché è un errore? Se domani l'azienda decide che la penale scatta al 20% invece che al 30%, non devi dover aggiornare il diagramma dei casi d'uso o la sua descrizione breve.
 
 ### UC Dettagliati
-
+controllare estenzioni e eccezioni e collegamenti tra di esse
