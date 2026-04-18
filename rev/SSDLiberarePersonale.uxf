@@ -1,0 +1,12 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>Text</id><coordinates><x>150</x><y>10</y><w>650</w><h>70</h></coordinates><panel_attributes>fontsize=24
+Diagrammi di sequenza di sistema
+per l'UC Gestire gli Eventi
+style=wordwrap
+halign=center
+bg=#FFFF99</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>150</x><y>80</y><w>650</w><h>40</h></coordinates><panel_attributes>fontsize=20
+Estensione 4a: Liberare Personale
+halign=center</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>180</x><y>130</y><w>100</w><h>110</h></coordinates><panel_attributes>Organizzatore</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>220</y><w>30</w><h>300</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;280</additional_attributes></element><element><id>UMLDeployment</id><coordinates><x>680</x><y>150</y><w>110</w><h>50</h></coordinates><panel_attributes>System</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>200</y><w>30</w><h>320</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;300</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>250</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+4a.1 richiediRimozionePersonale(unMembro, unServizio)</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>290</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+riepilogo operazione da confermare</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>350</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+4a.2 confermaRimozione()</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>390</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+personale rimosso e reso disponibile</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element></diagram>
