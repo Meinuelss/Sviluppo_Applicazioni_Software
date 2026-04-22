@@ -1,0 +1,50 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>Text</id><coordinates><x>0</x><y>60</y><w>650</w><h>40</h></coordinates><panel_attributes>fontsize=20
+Estensione 1a: Annullamento
+halign=center</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>30</x><y>110</y><w>100</w><h>110</h></coordinates><panel_attributes>Organizzatore</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>200</y><w>30</w><h>360</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;340</additional_attributes></element><element><id>UMLDeployment</id><coordinates><x>530</x><y>130</y><w>110</w><h>50</h></coordinates><panel_attributes>System</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>180</y><w>30</w><h>390</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;370</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>220</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+1a.1 annullaEvento(unEvento)</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>290</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+fg=#761C8C
+evento annullato</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>360</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+fg=#761C8C
+avviso penale e richiesta deroga</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>100</x><y>0</y><w>440</w><h>60</h></coordinates><panel_attributes>valign=center
+halign=center
+Diagrammi di sequenza di sistema
+per l'UC Gestire gli Eventi
+lw=0
+fontsize=24
+bg=#F9FF47</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>30</x><y>270</y><w>600</w><h>250</h></coordinates><panel_attributes>ALT
+fg=#761C8C
+bg=#E7BFFF
+layer=-1
+lw=2
+--
+
+
+
+-.
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>40</x><y>390</y><w>580</w><h>130</h></coordinates><panel_attributes>ALT
+fg=#761C8C
+bg=#E7BFFF
+layer=-1
+lw=2
+--
+
+
+
+-.
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>400</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+fg=#761C8C
+1a.1a.2 inserisciDeroga(motivazione)</panel_attributes><additional_attributes>510;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>430</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+fg=#761C8C
+evento annullato (penale aggirata)</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>470</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;
+fg=#761C8C
+1a.1a.3 confermaAnnullamento()</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>490</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+fg=#761C8C
+evento annullato (penale addebitata)</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element></diagram>
