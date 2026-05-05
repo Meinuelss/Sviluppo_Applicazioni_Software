@@ -12,6 +12,7 @@ Separare note da noteStoriche nel modello di dominio
 Valorizzare tipologia in creaEvento o rimuoverlo dal modello
 
 GEMINI
+
 UC DETTAGLIATO: 
 Nel passo 1c.2 (Modifica dati) indicate "Torna al passo 2". Questo è un po' rigido: se modifico solo il numero di partecipanti (senza violare le soglie) o le note, non è detto che io debba ridefinire tutti i servizi. Sarebbe stato meglio un ritorno opzionale o al termine del caso d'uso.
 
