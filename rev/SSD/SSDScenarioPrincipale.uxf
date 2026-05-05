@@ -1,5 +1,5 @@
 <diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><element><id>UMLActor</id><coordinates><x>275</x><y>143</y><w>110</w><h>121</h></coordinates><panel_attributes>Organizzatore</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>781</x><y>209</y><w>33</w><h>902</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;800</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>242</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
-1. creaEvento(datiCliente, date, luogo, pax, note)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>275</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+1. creaEvento(datiCliente, dataInizio, dataFine, luogo, pax, note)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>275</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
 evento registrato in stato preliminare</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>319</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
 2. definisciServizio(fasciaOraria, tipologia)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>528</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
 4. assegnaPersonale(unMembro, ruolo)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>561</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
@@ -24,7 +24,7 @@ Scenario principale
 lw=0
 fontsize=18</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>264</x><y>308</y><w>561</w><h>88</h></coordinates><panel_attributes>LOOP
 fg=blue
-bg=#8CB4FF</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>231</x><y>726</y><w>627</w><h>286</h></coordinates><panel_attributes>LOOP
+bg=#8CB4FF</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>231</x><y>726</y><w>627</w><h>198</h></coordinates><panel_attributes>LOOP
 fg=blue
 bg=#8CB4FF</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>264</x><y>517</y><w>561</w><h>88</h></coordinates><panel_attributes>LOOP
 fg=blue
@@ -34,6 +34,8 @@ bg=#B8E0E0</panel_attributes><additional_attributes></additional_attributes></el
 4a.1 richiediRimozionePersonale(unMembro, unTurno)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>264</x><y>814</y><w>561</w><h>99</h></coordinates><panel_attributes>OPT
 fg=#128C86
 bg=#B8E0E0</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>957</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
-stato "In corso" impostato</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>1012</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+stato "In corso" impostato e personale notificato</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>1012</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
 7. chiudiEvento(noteStoriche, documentazione)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>1045</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
-evento chiuso</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element></diagram>
+evento chiuso</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>264</x><y>924</y><w>594</w><h>66</h></coordinates><panel_attributes>LOOP
+fg=blue
+bg=#8CB4FF</panel_attributes><additional_attributes></additional_attributes></element></diagram>
