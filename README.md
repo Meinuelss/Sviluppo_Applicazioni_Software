@@ -2,6 +2,7 @@
 - Manca estensione 6a, da riportare negli SSD e contratti? o visto che la modifica del menù è relativa ad un solo evento non bisogna farlo?
 - Manca estensione 4a, da riportare o no
 - Gestione preavviso 14 giorni, in ogni file, come dobbiamo gestirlo?
+- Termianzione nell'UC al passo 7 o come estensione?
   
 Aggiungere la propagazione su ricorrenza in UC, contratti, SSD, DSD, DCD (è il buco più grave: -2/-3 punti da solo)
 Aggiungere la modifica della ricorrenza in sé (frequenza/numero ripetizioni)
