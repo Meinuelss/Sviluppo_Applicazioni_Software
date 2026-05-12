@@ -1,6 +1,6 @@
 <diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>Text</id><coordinates><x>350</x><y>60</y><w>650</w><h>40</h></coordinates><panel_attributes>fontsize=20
-Estensione 2a, 2b, 2c
-halign=center</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>380</x><y>110</y><w>100</w><h>110</h></coordinates><panel_attributes>Organizzatore</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>200</y><w>30</w><h>720</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;700</additional_attributes></element><element><id>UMLDeployment</id><coordinates><x>880</x><y>130</y><w>110</w><h>50</h></coordinates><panel_attributes>System</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>920</x><y>180</y><w>30</w><h>750</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;730</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>360</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+Estensione 2a, 2b, 2c, 2d
+halign=center</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>380</x><y>110</y><w>100</w><h>110</h></coordinates><panel_attributes>Organizzatore</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>200</y><w>30</w><h>820</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;800</additional_attributes></element><element><id>UMLDeployment</id><coordinates><x>880</x><y>130</y><w>110</w><h>50</h></coordinates><panel_attributes>System</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>920</x><y>180</y><w>30</w><h>840</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;820</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>360</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
 2a.1 annullaEvento(unEvento)</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>390</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
 evento annullato e chiede se eliminare anche la ricorrenza</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>450</x><y>0</y><w>440</w><h>60</h></coordinates><panel_attributes>valign=center
 halign=center
@@ -8,7 +8,7 @@ Diagrammi di sequenza di sistema
 per l'UC Gestire gli Eventi
 lw=0
 fontsize=24
-bg=#F9FF47</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>250</x><y>280</y><w>740</w><h>540</h></coordinates><panel_attributes>ALT
+bg=#F9FF47</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>250</x><y>280</y><w>740</w><h>720</h></coordinates><panel_attributes>ALT
 fg=#761C8C
 bg=#E7BFFF
 layer=-1
@@ -21,6 +21,16 @@ lw=2
 
 
 
+
+
+
+
+
+
+
+
+
+-.
 
 
 
@@ -83,9 +93,9 @@ lw=2
 
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>570</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
 evento eliminato e chiede se eliminare anche la ricorrenza</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>620</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-2b.1a.1 evento/istanza "in corso" impossibile eliminarla</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>680</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
-2b.1 terminaEvento(unEvento)</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>710</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-evento impostato come "chiuso" e allega note e documentazione</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>380</x><y>710</y><w>600</w><h>90</h></coordinates><panel_attributes>ALT
+2b.1a.1 evento/istanza "in corso" impossibile eliminarla suggerisce Annullamento</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>680</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+2c.1 terminaEvento(unEvento)</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>710</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+evento impostato come "chiuso" e allega note e documentazione</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>370</x><y>710</y><w>600</w><h>90</h></coordinates><panel_attributes>ALT
 fg=#FF0000
 bg=red
 layer=-1
@@ -101,4 +111,24 @@ lw=2
 
 
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>760</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
-2c.1a evento è in fase preliminare e blocca la terminazione</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element></diagram>
+2c.1a evento è in fase preliminare e blocca la terminazione</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>430</x><y>820</y><w>520</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+2d.1 modificaDati(pax)</panel_attributes><additional_attributes>10;20;500;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>370</x><y>850</y><w>600</w><h>140</h></coordinates><panel_attributes>ALT
+fg=#FF0000
+bg=red
+layer=-1
+lw=2
+--
+
+-.
+
+
+
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>860</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+numero partecipanti modificati</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>900</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+2d.1a.1 troppa differenza del numero di partecipanti, applica Deroga/Penale</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>930</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+2d.1a.2 inserisciDerogaPenale(motivazioneDeroga?, penale?)</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>960</y><w>530</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+2d.1a.3 applica Deroga o Penale</panel_attributes><additional_attributes>10;20;510;20</additional_attributes></element></diagram>
