@@ -1,18 +1,12 @@
-<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><element><id>UMLActor</id><coordinates><x>275</x><y>143</y><w>110</w><h>121</h></coordinates><panel_attributes>Organizzatore</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>781</x><y>209</y><w>33</w><h>902</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;800</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>242</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
-1. creaEvento(datiCliente, dataInizio, dataFine, luogo, pax, note)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>275</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
-evento registrato in stato preliminare</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>319</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
-2. definisciServizio(fasciaOraria, tipologia)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>528</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
-4. assegnaPersonale(unMembro, ruolo)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>561</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
-personale assegnato</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>924</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
-6. approvaMenu(unMenu)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>770</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
-mostra menu proposto dallo chef</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>352</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
-servizio registrato</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>242</y><w>33</w><h>869</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;770</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>407</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
-3. assegnaChef(unoChef)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>440</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
-assegnamento registrato e chef notificato</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>660</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
-personale rimosso e reso disponibile</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>737</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
-5. consultaMenuProposto(unServizio)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>UMLDeployment</id><coordinates><x>726</x><y>165</y><w>121</w><h>55</h></coordinates><panel_attributes>Sistema</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>825</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
-6a.1 proponiModifiche(unMenu, noteModifica)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>858</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
-proposte registrate come annotazioni locali</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>0</y><w>484</w><h>66</h></coordinates><panel_attributes>valign=center
+<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><element><id>UMLActor</id><coordinates><x>275</x><y>143</y><w>110</w><h>121</h></coordinates><panel_attributes>Organizzatore</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>781</x><y>209</y><w>33</w><h>616</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;540</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>242</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+1. creaSchedaEvento(titolo?)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>286</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+scheda evento bianca registrata</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>418</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+3. definisciServizio(fasciaOraria, tipologia)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>594</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+5. assegnaPersonale(unMembro, ruolo)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>627</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+personale assegnato</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>374</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+evento registrato in fase preliminare</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>242</y><w>33</w><h>594</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;520</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>506</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+4. assegnaChef(unoChef)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>539</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+assegnamento registrato e chef notificato</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>UMLDeployment</id><coordinates><x>726</x><y>165</y><w>121</w><h>55</h></coordinates><panel_attributes>Sistema</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>0</y><w>484</w><h>66</h></coordinates><panel_attributes>valign=center
 halign=center
 Diagrammi di sequenza di sistema
 per l'UC Gestire gli Eventi
@@ -22,20 +16,20 @@ bg=#F9FF47</panel_attributes><additional_attributes></additional_attributes></el
 halign=center
 Scenario principale
 lw=0
-fontsize=18</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>264</x><y>308</y><w>561</w><h>88</h></coordinates><panel_attributes>LOOP
+fontsize=18</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>286</x><y>407</y><w>561</w><h>88</h></coordinates><panel_attributes>LOOP
 fg=blue
-bg=#8CB4FF</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>231</x><y>726</y><w>627</w><h>198</h></coordinates><panel_attributes>LOOP
-fg=blue
-bg=#8CB4FF</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>264</x><y>517</y><w>561</w><h>88</h></coordinates><panel_attributes>LOOP
-fg=blue
-bg=#8CB4FF</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>264</x><y>616</y><w>561</w><h>99</h></coordinates><panel_attributes>OPT
+bg=#8CB4FF</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>330</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+2. inserisciDati(datiCliente, dataInizio, dataFine, luogo, pax, riccorrenza?)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>451</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+servizio registrato</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>308</x><y>506</y><w>517</w><h>77</h></coordinates><panel_attributes>OPT
 fg=#128C86
-bg=#B8E0E0</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>627</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
-4a.1 richiediRimozionePersonale(unMembro, unTurno)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>264</x><y>814</y><w>561</w><h>99</h></coordinates><panel_attributes>OPT
-fg=#128C86
-bg=#B8E0E0</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>957</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
-stato "In corso" impostato e personale notificato</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>1012</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
-7. chiudiEvento(noteStoriche, documentazione)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>1045</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
-evento chiuso</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>264</x><y>924</y><w>594</w><h>66</h></coordinates><panel_attributes>LOOP
+bg=#B8E0E0</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>286</x><y>594</y><w>561</w><h>88</h></coordinates><panel_attributes>LOOP
 fg=blue
-bg=#8CB4FF</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+bg=#8CB4FF</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>308</x><y>418</y><w>517</w><h>66</h></coordinates><panel_attributes>OPT
+fg=#128C86
+bg=#B8E0E0</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>308</x><y>605</y><w>506</w><h>66</h></coordinates><panel_attributes>OPT
+fg=#128C86
+bg=#B8E0E0</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>682</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+6. confermaEvento()</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>319</x><y>715</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+evento impostato in fase preliminare</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>308</x><y>330</y><w>517</w><h>77</h></coordinates><panel_attributes>OPT
+fg=#128C86
+bg=#B8E0E0</panel_attributes><additional_attributes></additional_attributes></element></diagram>
