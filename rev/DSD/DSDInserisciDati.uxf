@@ -1,0 +1,98 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLPackage</id><coordinates><x>120</x><y>250</y><w>70</w><h>50</h></coordinates><panel_attributes>UI</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>290</y><w>30</w><h>680</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;660</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>360</x><y>260</y><w>180</w><h>40</h></coordinates><panel_attributes>eventMgr:
+EventManager</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>290</y><w>30</w><h>680</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;660</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>440</x><y>330</y><w>20</w><h>590</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>90</x><y>320</y><w>370</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+                   insertData(clientData, startDate, endDate, place, 
+                   pax, notes?, recurrence?, frequency?, conclusion?)</panel_attributes><additional_attributes>120;20;60;20;350;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>610</x><y>260</y><w>180</w><h>40</h></coordinates><panel_attributes>userMgr:
+UserManager</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>290</y><w>30</w><h>650</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;630</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>690</x><y>360</y><w>20</w><h>40</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>350</y><w>260</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+getCurrentUser()</panel_attributes><additional_attributes>10;20;240;20</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>370</y><w>260</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+user</panel_attributes><additional_attributes>10;20;240;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>130</x><y>450</y><w>1020</w><h>480</h></coordinates><panel_attributes>alt
+fg=#761C8C
+[user.isOrganizer()]
+--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-.
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>810</x><y>260</y><w>120</w><h>40</h></coordinates><panel_attributes>e: Event</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>860</x><y>280</y><w>30</w><h>660</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;640</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>870</y><w>320</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+throw UseCaseLogicException
+fg=red</panel_attributes><additional_attributes>10;20;300;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>250</x><y>770</y><w>880</w><h>30</h></coordinates><panel_attributes>fg=blue
+[for each er in eventReceivers]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1030</x><y>260</y><w>170</w><h>40</h></coordinates><panel_attributes>er: EventReceiver</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1100</x><y>770</y><w>20</w><h>30</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>770</y><w>670</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+updateEventDataChanged(e)</panel_attributes><additional_attributes>10;20;650;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>330</x><y>560</y><w>800</w><h>40</h></coordinates><panel_attributes>opt 
+[notes != null]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>860</x><y>520</y><w>20</w><h>160</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>520</y><w>430</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+setData(clientData, startDate, endDate, place, pax)</panel_attributes><additional_attributes>10;20;410;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>450</x><y>90</y><w>440</w><h>60</h></coordinates><panel_attributes>valign=center
+halign=center
+DSD
+per l'UC Gestire gli Eventi
+lw=0
+fontsize=24
+bg=#F9FF47</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>450</x><y>150</y><w>440</w><h>30</h></coordinates><panel_attributes>valign=center
+halign=center
+inserisciDati
+lw=0
+fontsize=18</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>450</y><w>200</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+e := this.currentEvent</panel_attributes><additional_attributes>10;10;60;10;60;30;10;30</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>140</x><y>490</y><w>1000</w><h>350</h></coordinates><panel_attributes>alt
+fg=#761C8C
+[e.getStatus() == "Preliminary"]
+--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>800</y><w>330</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+throw UseCaseLogicException
+fg=red</panel_attributes><additional_attributes>10;20;310;20</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>560</y><w>430</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+setNotes(notes)
+</panel_attributes><additional_attributes>10;20;410;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>300</x><y>610</y><w>830</w><h>150</h></coordinates><panel_attributes>opt 
+recurrence == true
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>620</y><w>460</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+create(frequency, conclusion)
+</panel_attributes><additional_attributes>10;20;440;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>890</x><y>620</y><w>120</w><h>30</h></coordinates><panel_attributes>r: Recurrence </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1100</x><y>290</y><w>30</w><h>660</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;640</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>640</y><w>430</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+        setRecurrence(r)
+</panel_attributes><additional_attributes>10;20;410;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>310</x><y>670</y><w>810</w><h>90</h></coordinates><panel_attributes>fg=blue
+[for each scheduled 
+occurrence until 
+conclusion]</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>670</y><w>480</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+create()
+</panel_attributes><additional_attributes>10;20;460;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>910</x><y>670</y><w>120</w><h>30</h></coordinates><panel_attributes>ei: Event </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>690</y><w>30</w><h>260</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;240</additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>640</y><w>30</w><h>310</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;290</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>690</y><w>560</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+copyFrom(e) 
+</panel_attributes><additional_attributes>10;20;540;20</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>710</y><w>560</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+setDates(occurrenceStart, occurrenceEnd)
+</panel_attributes><additional_attributes>10;20;540;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>990</x><y>710</y><w>20</w><h>40</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>730</y><w>560</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;
+setRecurrence(r)
+</panel_attributes><additional_attributes>10;20;540;20</additional_attributes></element></diagram>

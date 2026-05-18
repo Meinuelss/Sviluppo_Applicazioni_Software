@@ -1,0 +1,59 @@
+<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><element><id>UMLActor</id><coordinates><x>77</x><y>143</y><w>110</w><h>121</h></coordinates><panel_attributes>Organizzatore</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>583</x><y>209</y><w>33</w><h>704</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;620</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>242</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+1. creaSchedaEvento(titolo?)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>286</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+scheda evento bianca registrata</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>418</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+3. definisciServizio(fasciaOraria, tipologia)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>374</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+evento registrato in fase preliminare</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>242</y><w>33</w><h>671</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;590</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>506</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+4. assegnaChef(unoChef)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>539</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+assegnamento registrato e chef notificato</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>UMLDeployment</id><coordinates><x>528</x><y>165</y><w>121</w><h>55</h></coordinates><panel_attributes>Sistema</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>132</x><y>0</y><w>484</w><h>66</h></coordinates><panel_attributes>valign=center
+halign=center
+Diagrammi di sequenza di sistema
+per l'UC Gestire gli Eventi
+lw=0
+fontsize=24
+bg=#F9FF47</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>132</x><y>66</y><w>484</w><h>33</h></coordinates><panel_attributes>valign=center
+halign=center
+Estensione 4a, 4b
+lw=0
+fontsize=18</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>88</x><y>407</y><w>561</w><h>88</h></coordinates><panel_attributes>LOOP
+fg=blue
+bg=#8CB4FF</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>330</y><w>495</w><h>55</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+2. inserisciDati(datiCliente, dataInizio, dataFine, luogo, pax, note? 
+ricorrenza?, frequenza?, conclusione?)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>451</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+servizio registrato</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>99</x><y>506</y><w>517</w><h>77</h></coordinates><panel_attributes>OPT
+fg=#128C86
+bg=#B8E0E0</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>110</x><y>418</y><w>517</w><h>66</h></coordinates><panel_attributes>OPT
+fg=#128C86
+bg=#B8E0E0</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>110</x><y>330</y><w>517</w><h>77</h></coordinates><panel_attributes>OPT
+fg=#128C86
+bg=#B8E0E0</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>0</x><y>495</y><w>704</w><h>396</h></coordinates><panel_attributes>ALT
+fg=#761C8C
+bg=#E7BFFF
+--
+
+
+
+
+-.
+
+
+
+
+
+
+
+
+
+
+
+
+-.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>594</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+4a.1 consultaMenù(unEvento)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>627</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+fornisce la lista dei menù proposti dallo chef</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>660</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+4a.2 proponiModifiche(unMenù)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>693</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+salva la proposta di modifica</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>726</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+4a.3 approvaMenù(unMenù)</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>99</x><y>660</y><w>517</w><h>66</h></coordinates><panel_attributes>OPT
+fg=#128C86
+bg=#B8E0E0</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>759</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+salva il menù e imposta lo stato dell'evento "In Corso"</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>803</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+4b.1 consultaMenùPassati()</panel_attributes><additional_attributes>430;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>836</y><w>495</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+fornisce la lista dei menù passati degli eventi precedenti</panel_attributes><additional_attributes>10;20;430;20</additional_attributes></element></diagram>

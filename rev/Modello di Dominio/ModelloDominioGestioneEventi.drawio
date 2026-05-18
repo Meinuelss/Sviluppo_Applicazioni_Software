@@ -1,6 +1,6 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.2 Chrome/134.0.6998.178 Electron/35.1.2 Safari/537.36">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.2 Chrome/134.0.6998.178 Electron/35.1.2 Safari/537.36">
   <diagram name="Pagina-1" id="joHNVAkaYWBeBggB5E7u">
-    <mxGraphModel dx="1473" dy="565" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1845" dy="839" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -190,7 +190,7 @@
         <mxCell id="cZMs2C7KkQb-unPeTSbi-13" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Evento" vertex="1">
           <mxGeometry height="220" width="150" x="290" y="430" as="geometry" />
         </mxCell>
-        <mxCell id="cZMs2C7KkQb-unPeTSbi-14" parent="cZMs2C7KkQb-unPeTSbi-13" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="stato: testo&lt;div&gt;tipologia: testo&lt;/div&gt;&lt;div&gt;dataInizio: data&lt;/div&gt;&lt;div&gt;dataFine: data&lt;/div&gt;&lt;div&gt;luogo: testo&lt;/div&gt;&lt;div&gt;numPartec.: numero&lt;/div&gt;&lt;div&gt;note: testo&lt;/div&gt;&lt;div&gt;penale: si/no&lt;/div&gt;&lt;div&gt;motivazioneDeroga: testo&lt;/div&gt;&lt;div&gt;frequenza: testo&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;nRipetizioni: numero&lt;/span&gt;&lt;/div&gt;&lt;div&gt;idRicorrenza: testo&lt;/div&gt;&lt;div&gt;ricorrenza: si/no&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+        <mxCell id="cZMs2C7KkQb-unPeTSbi-14" parent="cZMs2C7KkQb-unPeTSbi-13" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="stato: testo&lt;div&gt;dataInizio: data&lt;/div&gt;&lt;div&gt;dataFine: data&lt;/div&gt;&lt;div&gt;luogo: testo&lt;/div&gt;&lt;div&gt;numPartec.: numero&lt;/div&gt;&lt;div&gt;note: testo&lt;/div&gt;&lt;div&gt;penale: si/no&lt;/div&gt;&lt;div&gt;motivazioneDeroga: testo&lt;/div&gt;&lt;div&gt;frequenza: testo&lt;/div&gt;&lt;div&gt;conclusione: data&lt;/div&gt;&lt;div&gt;idRicorrenza: testo&lt;/div&gt;&lt;div&gt;ricorrenza: si/no&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="194" width="150" y="26" as="geometry" />
         </mxCell>
         <mxCell id="cZMs2C7KkQb-unPeTSbi-19" edge="1" parent="1" source="cZMs2C7KkQb-unPeTSbi-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;startFill=0;exitX=-0.005;exitY=-0.015;exitDx=0;exitDy=0;exitPerimeter=0;" target="cZMs2C7KkQb-unPeTSbi-7">
@@ -499,13 +499,13 @@
         <mxCell id="cZMs2C7KkQb-unPeTSbi-107" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;div&gt;Se un compito ha completato = sì allora&amp;nbsp;&lt;/div&gt;&lt;div&gt;il compito deve avere obbligatoriamente&amp;nbsp;&lt;/div&gt;&lt;div&gt;associato un cuoco ed un turno. In alternativa,&amp;nbsp;&lt;/div&gt;&lt;div&gt;tale assegnamento non è obbligatorio.&lt;/div&gt;" vertex="1">
           <mxGeometry height="94.5" width="240" x="1422.5" y="848.5" as="geometry" />
         </mxCell>
-        <mxCell id="_qG_SJisv5SnWYnWGIV6-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Se lo stato dell&#39;Evento è &quot;in corso&quot; (lavori preparatori iniziati), l&#39;annullamento o l&#39;eliminazione richiede la generazione di una penale (&lt;code data-path-to-node=&quot;14,1,0&quot; data-index-in-node=&quot;173&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;penaleApplicata&lt;/font&gt;&lt;/code&gt;&amp;nbsp;= si) a meno che l&#39;Organizzatore non inserisca una motivazione testuale per la deroga (Eccezioni 1a.1a, 1a.1b)." vertex="1">
+        <mxCell id="_qG_SJisv5SnWYnWGIV6-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Se lo stato dell&#39;Evento è &quot;in corso&quot; (lavori preparatori iniziati), l&#39;annullamento richiede la generazione di una penale (&lt;code data-path-to-node=&quot;14,1,0&quot; data-index-in-node=&quot;173&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;penaleApplicata&lt;/font&gt;&lt;/code&gt;&amp;nbsp;= si) a meno che l&#39;Organizzatore non inserisca una motivazione testuale per la deroga. L&#39;eliminazione invece non può essere effettuata." vertex="1">
           <mxGeometry height="113" width="240" x="20" y="290" as="geometry" />
         </mxCell>
-        <mxCell id="_qG_SJisv5SnWYnWGIV6-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Tutte le&amp;nbsp;&lt;i data-path-to-node=&quot;14,0,0&quot; data-index-in-node=&quot;32&quot;&gt;istanze&lt;/i&gt;&amp;nbsp;generate da una&amp;nbsp;&lt;i data-path-to-node=&quot;14,0,0&quot; data-index-in-node=&quot;56&quot;&gt;Ricorrenza&lt;/i&gt;&amp;nbsp;ereditano di default le impostazioni dell&#39;&amp;nbsp;&lt;i data-path-to-node=&quot;14,0,0&quot; data-index-in-node=&quot;110&quot;&gt;Evento capofila&lt;/i&gt;&amp;nbsp;(Estensione 1d)" vertex="1">
+        <mxCell id="_qG_SJisv5SnWYnWGIV6-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Tutte le&amp;nbsp;&lt;i data-path-to-node=&quot;14,0,0&quot; data-index-in-node=&quot;32&quot;&gt;istanze&lt;/i&gt;&amp;nbsp;generate da una&amp;nbsp;&lt;i data-path-to-node=&quot;14,0,0&quot; data-index-in-node=&quot;56&quot;&gt;Ricorrenza&lt;/i&gt;&amp;nbsp;ereditano di default le impostazioni dell&#39;&amp;nbsp;&lt;i data-path-to-node=&quot;14,0,0&quot; data-index-in-node=&quot;110&quot;&gt;Evento capofila.&lt;/i&gt;" vertex="1">
           <mxGeometry height="80" width="220" x="30" y="830" as="geometry" />
         </mxCell>
-        <mxCell id="_qG_SJisv5SnWYnWGIV6-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;font face=&quot;Helvetica&quot;&gt;Se un Menù non è confermato (&lt;/font&gt;&lt;font face=&quot;Helvetica&quot;&gt;approvato&lt;/font&gt;&lt;font face=&quot;monospace&quot;&gt;&amp;nbsp;= no&lt;/font&gt;), il Sistema deve notificare l&#39;organizzatore durante l&#39;assegnazione del Personale, pur permettendo l&#39;operazione (Estensione 4b)." vertex="1">
+        <mxCell id="_qG_SJisv5SnWYnWGIV6-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;font face=&quot;Helvetica&quot;&gt;Se un Menù non è confermato (&lt;/font&gt;&lt;font face=&quot;Helvetica&quot;&gt;approvato&lt;/font&gt;&lt;font face=&quot;monospace&quot;&gt;&amp;nbsp;= no&lt;/font&gt;), il Sistema deve notificare l&#39;organizzatore durante l&#39;assegnazione del Personale, pur permettendo l&#39;operazione." vertex="1">
           <mxGeometry height="113" width="240" x="450" y="100" as="geometry" />
         </mxCell>
         <mxCell id="_qG_SJisv5SnWYnWGIV6-18" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Assegnamento Personale" vertex="1">
@@ -592,8 +592,17 @@
             <mxPoint x="-1" y="22" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BgPHNUnuabxvtOjO47ns-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;div&gt;Preavviso minimo 14 giorni&lt;/div&gt;" vertex="1">
-          <mxGeometry height="50" width="170" x="500" y="370" as="geometry" />
+        <mxCell id="BgPHNUnuabxvtOjO47ns-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;div&gt;Preavviso minimo 14 giorni per la prenotazione di un evento di grandi dimensioni.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="170" x="520" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="j_QG8otKWwsNku1ImeZb-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Se lo stato dell&#39;Evento è in stato &quot;Preliminare&quot;, l&#39;annullamento o l&#39;eliminazione possono essere effettuati senza la necessità di una penale o una deroga, ma non può essere effettuata la terminazione dell&#39;evento." vertex="1">
+          <mxGeometry height="88.5" width="230" x="120" y="11.5" as="geometry" />
+        </mxCell>
+        <mxCell id="j_QG8otKWwsNku1ImeZb-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Se l&#39;evento e in stato &quot;In corso&quot; la modifica dei dati non può avvenire.&amp;nbsp;&lt;div&gt;Se l&#39;evento è in stato &quot;preliminare&quot; e la variazione del numero dei partecipanti eccede del&amp;nbsp;&lt;span style=&quot;font-size: 12pt; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;±&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;30% verrà applicata una penale a meno che l&#39;organizzatore non inserisca una deroga&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="260" x="10" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="WN3jmrBzOCe_Jvph34pI-1" parent="1" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="&lt;h1&gt;&lt;font style=&quot;font-size: 20px; color: rgb(103, 171, 159);&quot;&gt;&lt;b&gt;MODELLO DI DOMINIO&lt;/b&gt;&lt;/font&gt;&lt;/h1&gt;" vertex="1">
+          <mxGeometry height="150" width="600" x="950" y="10" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
