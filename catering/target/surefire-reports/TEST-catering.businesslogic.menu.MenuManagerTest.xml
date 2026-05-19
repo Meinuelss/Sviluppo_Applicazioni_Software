@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="catering.businesslogic.menu.MenuManagerTest" time="1.623" tests="0" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="catering.businesslogic.menu.MenuManagerTest" time="1.393" tests="0" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.class.path" value="/Users/manu/Desktop/catering pulito/target/test-classes:/Users/manu/Desktop/catering pulito/target/classes:/Users/manu/.m2/repository/org/xerial/sqlite-jdbc/3.49.1.0/sqlite-jdbc-3.49.1.0.jar:/Users/manu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.12.2/junit-jupiter-api-5.12.2.jar:/Users/manu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/manu/.m2/repository/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.jar:/Users/manu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/manu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.12.2/junit-jupiter-engine-5.12.2.jar:/Users/manu/.m2/repository/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.jar:"/>
+    <property name="java.class.path" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/test-classes:/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/classes:/Users/manu/.m2/repository/org/xerial/sqlite-jdbc/3.49.1.0/sqlite-jdbc-3.49.1.0.jar:/Users/manu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.12.2/junit-jupiter-api-5.12.2.jar:/Users/manu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/manu/.m2/repository/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.jar:/Users/manu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/manu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.12.2/junit-jupiter-engine-5.12.2.jar:/Users/manu/.m2/repository/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.jar:"/>
     <property name="java.vm.vendor" value="Homebrew"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
@@ -13,10 +13,10 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IT"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/23.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/manu/Desktop/catering pulito/target/surefire/surefirebooter-20260519130056964_3.jar /Users/manu/Desktop/catering pulito/target/surefire 2026-05-19T13-00-56_875-jvmRun1 surefire-20260519130056964_1tmp surefire_0-20260519130056964_2tmp"/>
+    <property name="sun.java.command" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire/surefirebooter-20260519162003236_3.jar /Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire 2026-05-19T16-20-03_129-jvmRun1 surefire-20260519162003236_1tmp surefire_0-20260519162003236_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="/Users/manu/Desktop/catering pulito/target/test-classes:/Users/manu/Desktop/catering pulito/target/classes:/Users/manu/.m2/repository/org/xerial/sqlite-jdbc/3.49.1.0/sqlite-jdbc-3.49.1.0.jar:/Users/manu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.12.2/junit-jupiter-api-5.12.2.jar:/Users/manu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/manu/.m2/repository/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.jar:/Users/manu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/manu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.12.2/junit-jupiter-engine-5.12.2.jar:/Users/manu/.m2/repository/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.jar:"/>
+    <property name="surefire.test.class.path" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/test-classes:/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/classes:/Users/manu/.m2/repository/org/xerial/sqlite-jdbc/3.49.1.0/sqlite-jdbc-3.49.1.0.jar:/Users/manu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.12.2/junit-jupiter-api-5.12.2.jar:/Users/manu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/manu/.m2/repository/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.jar:/Users/manu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/manu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.12.2/junit-jupiter-engine-5.12.2.jar:/Users/manu/.m2/repository/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/Users/manu"/>
     <property name="user.language" value="it"/>
@@ -24,13 +24,13 @@
     <property name="java.version.date" value="2025-01-21"/>
     <property name="java.home" value="/usr/local/Cellar/openjdk/23.0.2/libexec/openjdk.jdk/Contents/Home"/>
     <property name="file.separator" value="/"/>
-    <property name="basedir" value="/Users/manu/Desktop/catering pulito"/>
+    <property name="basedir" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/manu/Desktop/catering pulito/target/surefire/surefirebooter-20260519130056964_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire/surefirebooter-20260519162003236_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="23.0.2"/>
@@ -46,7 +46,7 @@
     <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
     <property name="java.io.tmpdir" value="/var/folders/1p/8_2x_d4n7zj50lz9hg0fb3dm0000gn/T/"/>
     <property name="java.version" value="23.0.2"/>
-    <property name="user.dir" value="/Users/manu/Desktop/catering pulito"/>
+    <property name="user.dir" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering"/>
     <property name="os.arch" value="x86_64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="native.encoding" value="UTF-8"/>
@@ -59,29 +59,29 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testDeleteMenu_NonChef_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$DeleteMenu" time="0.065">
-    <system-err><![CDATA[2026-05-19 13:00:58.775 [INFO] catering.persistence.PersistenceManager: Database initialized successfully from database/catering_init_sqlite.sql
+  <testcase name="testChooseMenu_OwnedMenu_BecomesCurrent" classname="catering.businesslogic.menu.MenuManagerTest$ChooseMenu" time="0.05">
+    <system-err><![CDATA[2026-05-19 16:20:04.655 [INFO] catering.persistence.PersistenceManager: Database initialized successfully from database/catering_init_sqlite.sql
 ]]></system-err>
   </testcase>
-  <testcase name="testDeleteMenu_NotOwner_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$DeleteMenu" time="0.022"/>
-  <testcase name="testDeleteMenu_NonCurrentMenu_StillClearsCurrentMenu" classname="catering.businesslogic.menu.MenuManagerTest$DeleteMenu" time="0.031"/>
-  <testcase name="testDeleteMenu_OwnedAndNotInUse_ClearsCurrentMenu" classname="catering.businesslogic.menu.MenuManagerTest$DeleteMenu" time="0.016"/>
-  <testcase name="testChooseMenuForCopy_NonChef_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$ChooseMenuForCopy" time="0.028"/>
-  <testcase name="testChooseMenuForCopy_OwnershipTransfersToCurrentChef" classname="catering.businesslogic.menu.MenuManagerTest$ChooseMenuForCopy" time="0.078"/>
-  <testcase name="testChooseMenu_OwnedMenu_BecomesCurrent" classname="catering.businesslogic.menu.MenuManagerTest$ChooseMenu" time="0.048"/>
-  <testcase name="testChooseMenu_NotOwner_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$ChooseMenu" time="0.02"/>
+  <testcase name="testChooseMenu_NotOwner_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$ChooseMenu" time="0.022"/>
   <testcase name="testChooseMenu_NonChef_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$ChooseMenu" time="0.015"/>
-  <testcase name="testMoveSection_NoCurrentMenu_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$MoveSection" time="0.021"/>
-  <testcase name="testMoveSection_ValidPosition_Reorders" classname="catering.businesslogic.menu.MenuManagerTest$MoveSection" time="0.033"/>
-  <testcase name="testMoveSection_OutOfRange_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$MoveSection" time="0.024"/>
-  <testcase name="testMoveSection_SectionNotInCurrentMenu_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$MoveSection" time="0.016"/>
-  <testcase name="testInsertItem_NullSection_GoesToFreeItems" classname="catering.businesslogic.menu.MenuManagerTest$InsertItem" time="0.021"/>
-  <testcase name="testInsertItem_NoCurrentMenu_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$InsertItem" time="0.012"/>
-  <testcase name="testInsertItem_SectionNotInCurrentMenu_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$InsertItem" time="0.013"/>
-  <testcase name="testInsertItem_IntoSection_GoesToSection" classname="catering.businesslogic.menu.MenuManagerTest$InsertItem" time="0.014"/>
-  <testcase name="testInsertItem_RecipeOnly_DefaultsDescriptionToRecipeName" classname="catering.businesslogic.menu.MenuManagerTest$InsertItem" time="0.013"/>
-  <testcase name="testDefineSection_NoCurrentMenu_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$DefineSection" time="0.006"/>
-  <testcase name="testDefineSection_AppendsSection" classname="catering.businesslogic.menu.MenuManagerTest$DefineSection" time="0.015"/>
-  <testcase name="testCreateMenu_NonChef_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$CreateMenu" time="0.005"/>
-  <testcase name="testCreateMenu_AsChef_ReturnsMenu" classname="catering.businesslogic.menu.MenuManagerTest$CreateMenu" time="0.015"/>
+  <testcase name="testChooseMenuForCopy_NonChef_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$ChooseMenuForCopy" time="0.041"/>
+  <testcase name="testChooseMenuForCopy_OwnershipTransfersToCurrentChef" classname="catering.businesslogic.menu.MenuManagerTest$ChooseMenuForCopy" time="0.035"/>
+  <testcase name="testCreateMenu_NonChef_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$CreateMenu" time="0.042"/>
+  <testcase name="testCreateMenu_AsChef_ReturnsMenu" classname="catering.businesslogic.menu.MenuManagerTest$CreateMenu" time="0.014"/>
+  <testcase name="testDefineSection_NoCurrentMenu_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$DefineSection" time="0.008"/>
+  <testcase name="testDefineSection_AppendsSection" classname="catering.businesslogic.menu.MenuManagerTest$DefineSection" time="0.031"/>
+  <testcase name="testDeleteMenu_NonChef_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$DeleteMenu" time="0.016"/>
+  <testcase name="testDeleteMenu_NotOwner_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$DeleteMenu" time="0.017"/>
+  <testcase name="testDeleteMenu_NonCurrentMenu_StillClearsCurrentMenu" classname="catering.businesslogic.menu.MenuManagerTest$DeleteMenu" time="0.049"/>
+  <testcase name="testDeleteMenu_OwnedAndNotInUse_ClearsCurrentMenu" classname="catering.businesslogic.menu.MenuManagerTest$DeleteMenu" time="0.014"/>
+  <testcase name="testInsertItem_NullSection_GoesToFreeItems" classname="catering.businesslogic.menu.MenuManagerTest$InsertItem" time="0.014"/>
+  <testcase name="testInsertItem_NoCurrentMenu_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$InsertItem" time="0.014"/>
+  <testcase name="testInsertItem_SectionNotInCurrentMenu_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$InsertItem" time="0.012"/>
+  <testcase name="testInsertItem_IntoSection_GoesToSection" classname="catering.businesslogic.menu.MenuManagerTest$InsertItem" time="0.015"/>
+  <testcase name="testInsertItem_RecipeOnly_DefaultsDescriptionToRecipeName" classname="catering.businesslogic.menu.MenuManagerTest$InsertItem" time="0.015"/>
+  <testcase name="testMoveSection_NoCurrentMenu_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$MoveSection" time="0.008"/>
+  <testcase name="testMoveSection_ValidPosition_Reorders" classname="catering.businesslogic.menu.MenuManagerTest$MoveSection" time="0.039"/>
+  <testcase name="testMoveSection_OutOfRange_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$MoveSection" time="0.016"/>
+  <testcase name="testMoveSection_SectionNotInCurrentMenu_ThrowsUseCaseLogicException" classname="catering.businesslogic.menu.MenuManagerTest$MoveSection" time="0.012"/>
 </testsuite>

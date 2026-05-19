@@ -1,7 +1,6 @@
 package catering.businesslogic.event;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.util.ArrayList;
 
 import catering.businesslogic.CatERing;
@@ -16,7 +15,6 @@ import catering.businesslogic.user.User;
  * management and menu assignments for services.
  */
 public class EventManager {
-
 
     private ArrayList<EventReceiver> eventReceivers;
     private Event selectedEvent;
@@ -112,72 +110,6 @@ public class EventManager {
     }
 
     /**
-     * Creates a new event with the given details
-     * 
-     * @param name      Event name
-     * @param dateStart Start date
-     * @param dateEnd   End date (can be null)
-     * @param organizer User organizing the event
-     * @return The newly created event
-     */
-    public Event createEvent(String name, Date dateStart, Date dateEnd, User chef) {
-        try {
-
-            Event event = new Event();
-            event.setName(name);
-            event.setDateStart(dateStart);
-            event.setDateEnd(dateEnd);
-            event.setChef(chef);
-
-            // Notify all receivers (EventPersistence will persist)
-            notifyEventCreated(event);
-
-            // Set as selected event
-            this.selectedEvent = event;
-            this.currentService = null;
-
-            return event;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public void selectEvent(Event event) {
-        this.selectedEvent = event;
-        this.currentService = null;
-    }
-
-    public Service createService(String name, Date date, Time timeStart, Time timeEnd, String location)
-            throws UseCaseLogicException {
-        if (selectedEvent == null) {
-            String msg = "Cannot create service: no event selected";
-            throw new UseCaseLogicException(msg);
-        }
-
-        try {
-
-            Service service = new Service();
-            service.setName(name);
-            service.setDate(date);
-            service.setTimeStart(timeStart);
-            service.setTimeEnd(timeEnd);
-            service.setLocation(location);
-            service.setEventId(selectedEvent.getId());
-
-            // Notify all receivers (EventPersistence will persist)
-            notifyServiceCreated(service);
-
-            // Add to event and set as current service
-            selectedEvent.addService(service);
-            this.currentService = service;
-
-            return service;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    /**
      * Modifies an existing event
      * 
      * @param eventId ID of the event to modify
@@ -261,7 +193,6 @@ public class EventManager {
                 return false;
             }
 
-
             selectedEvent.removeService(serviceToDelete);
 
             // Clear current service if it was the one deleted
@@ -286,7 +217,8 @@ public class EventManager {
         // 1. Controllo permessi utente
         User user = CatERing.getInstance().getUserManager().getCurrentUser();
         if (user == null || !user.isOrganizer()) {
-            throw new UseCaseLogicException("Utente non autorizzato: devi essere un Organizzatore per eliminare un evento.");
+            throw new UseCaseLogicException(
+                    "Utente non autorizzato: devi essere un Organizzatore per eliminare un evento.");
         }
 
         // 2. Controllo che ci sia un evento selezionato
@@ -296,7 +228,8 @@ public class EventManager {
 
         // 3. REGOLA DI BUSINESS: L'eliminazione è permessa SOLO in fase Preliminare
         if (!"Preliminare".equals(this.selectedEvent.getStatus())) {
-            throw new UseCaseLogicException("Impossibile eliminare l'evento: l'eliminazione è consentita solo in fase Preliminare. Usa la funzione di annullamento.");
+            throw new UseCaseLogicException(
+                    "Impossibile eliminare l'evento: l'eliminazione è consentita solo in fase Preliminare. Usa la funzione di annullamento.");
         }
 
         // Salviamo il riferimento prima di svuotarlo
@@ -307,7 +240,8 @@ public class EventManager {
         this.currentService = null;
 
         // 5. Notifica i receiver per procedere con l'eliminazione nel DB
-        // (Questo andrà a chiamare in automatico EventPersistence -> Event.deleteEvent())
+        // (Questo andrà a chiamare in automatico EventPersistence ->
+        // Event.deleteEvent())
         notifyEventDeleted(eventToDelete);
     }
 
@@ -327,7 +261,6 @@ public class EventManager {
             String msg = "Cannot assign menu: no service selected";
             throw new UseCaseLogicException(msg);
         }
-
 
         currentService.setMenu(menu);
 
@@ -420,14 +353,15 @@ public class EventManager {
         }
     }
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //Aggiunta metodi per gestire i nostri casi nel test1
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // Aggiunta metodi per gestire i nostri casi nel test1
 
     public Event createEventCard(String title) throws UseCaseLogicException {
         // 1. Il sistema controlla che l'utente sia un organizzatore
         User user = CatERing.getInstance().getUserManager().getCurrentUser();
         if (user == null || !user.isOrganizer()) {
-            throw new UseCaseLogicException("Utente non autorizzato: devi essere un Organizzatore per creare un evento.");
+            throw new UseCaseLogicException(
+                    "Utente non autorizzato: devi essere un Organizzatore per creare un evento.");
         }
 
         // 2. Crea l'evento
@@ -440,23 +374,23 @@ public class EventManager {
 
         // 4. Viene settato lo stato preliminare
         event.setStatus("Preliminare");
-        
+
         // 5. Viene salvato in eventReceiver (Observer)
         notifyEventCreated(event);
-        
+
         // Aggiorniamo lo stato interno del manager
         this.selectedEvent = event;
         this.currentService = null;
-        
+
         return event;
     }
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //Aggiunta metodi per gestire i nostri casi nel test2
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // Aggiunta metodi per gestire i nostri casi nel test2
 
-    public void insertData(String clientData, Date startDate, Date endDate, String location, int pax, 
-                           String notes, boolean recurrence, String frequency, Date conclusion) throws UseCaseLogicException {
-        
+    public void insertData(String clientData, Date startDate, Date endDate, String location, int pax,
+            String notes, boolean recurrence, String frequency, Date conclusion) throws UseCaseLogicException {
+
         // 1. Ottiene l'utente e controlla che sia l'organizzatore [cite: 184, 383-385]
         User user = CatERing.getInstance().getUserManager().getCurrentUser();
         if (user == null || !user.isOrganizer()) {
@@ -466,7 +400,7 @@ public class EventManager {
         if (this.selectedEvent == null) {
             throw new UseCaseLogicException("Nessun evento in gestione.");
         }
-        
+
         // 2. Controlla che lo stato sia "Preliminare" [cite: 200, 386]
         if (!"Preliminare".equals(this.selectedEvent.getStatus())) {
             throw new UseCaseLogicException("Impossibile modificare l'evento: non è in stato Preliminare.");
@@ -490,34 +424,61 @@ public class EventManager {
             Recurrence r = new Recurrence(frequency, conclusion);
             this.selectedEvent.setRecurrenceObj(r);
 
-            // Simuliamo il ciclo: "for each scheduled occurrence until conclusion" [cite: 214, 395]
-            // Creiamo un'istanza fittizia di evento figlio (ei) per convalidare la logica del tuo DSD [cite: 214, 411]
-            Event ei = new Event();
-            
-            // Copia i dati dal capofila [cite: 214, 402]
-            ei.copyFrom(this.selectedEvent);
-            
-            // Calcola una data indicativa per l'occorrenza successiva (es. +7 giorni) [cite: 214, 403]
-            long unaSettimanaDopoMs = startDate.getTime() + (7L * 24 * 60 * 60 * 1000);
-            Date dataOccorrenzaInizio = new Date(unaSettimanaDopoMs);
-            Date dataOccorrenzaFine = new Date(unaSettimanaDopoMs + (endDate.getTime() - startDate.getTime()));
-            
-            // Setta le date dell'istanza e nuovamente la ricorrenza [cite: 214, 403-404]
-            ei.setDates(dataOccorrenzaInizio, dataOccorrenzaFine);
-            ei.setRecurrenceObj(r);
-            ei.setStatus("Preliminare");
-            
-            // Nota: Nella logica di business in memoria l'evento 'ei' viene configurato correttamente.
-            // Se necessario, potrebbe essere aggiunto a una lista di istanze generate.
+            // Generiamo le istanze future fino alla conclusione [cite: 214, 395]
+            java.util.Calendar calStart = java.util.Calendar.getInstance();
+            calStart.setTime(startDate);
+            java.util.Calendar calEnd = java.util.Calendar.getInstance();
+            calEnd.setTime(endDate);
+
+            // Avanziamo alla prima occorrenza
+            advanceDate(calStart, frequency);
+            advanceDate(calEnd, frequency);
+
+            while (!calStart.getTime().after(conclusion)) {
+                Event ei = new Event();
+
+                // Copia i dati dal capofila [cite: 214, 402]
+                ei.copyFrom(this.selectedEvent);
+
+                // Setta le date dell'istanza e nuovamente la ricorrenza [cite: 214, 403-404]
+                ei.setDates(new Date(calStart.getTimeInMillis()), new Date(calEnd.getTimeInMillis()));
+                ei.setRecurrenceObj(r);
+                ei.setStatus("Preliminare");
+
+                // Aggiunge l'istanza generata alla ricorrenza
+                r.addGeneratedEvent(ei);
+
+                // Salva a DB l'istanza generata (che a sua volta salverà anche la Recurrence se
+                // non salvata)
+                notifyEventCreated(ei);
+
+                // Avanza alla prossima data
+                advanceDate(calStart, frequency);
+                advanceDate(calEnd, frequency);
+            }
         }
 
-        // 6. Infine fa l'updateEventDataChanged tramite notifica all'Observer [cite: 405, 408]
-        notifyEventModified(this.selectedEvent); 
+        // 6. Infine fa l'updateEventDataChanged tramite notifica all'Observer [cite:
+        // 405, 408]
+        notifyEventModified(this.selectedEvent);
     }
 
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // Aggiunta metodi per gestire i nostri casi nel test3
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //Aggiunta metodi per gestire i nostri casi nel test3
+    private void advanceDate(java.util.Calendar cal, String frequency) {
+        if ("Giornaliera".equalsIgnoreCase(frequency) || "Giornaliero".equalsIgnoreCase(frequency)) {
+            cal.add(java.util.Calendar.DAY_OF_YEAR, 1);
+        } else if ("Settimanale".equalsIgnoreCase(frequency)) {
+            cal.add(java.util.Calendar.WEEK_OF_YEAR, 1);
+        } else if ("Mensile".equalsIgnoreCase(frequency)) {
+            cal.add(java.util.Calendar.MONTH, 1);
+        } else {
+            // Default di ripiego
+            cal.add(java.util.Calendar.WEEK_OF_YEAR, 1);
+        }
+    }
+
     public void approveMenu(Menu menu, String modifications) throws UseCaseLogicException {
         // 1. Il solito controllo sull'organizzatore [cite: 448-449]
         User user = CatERing.getInstance().getUserManager().getCurrentUser();
@@ -535,13 +496,13 @@ public class EventManager {
         // 2. Opzionalmente propone modifiche [cite: 462-463]
         if (modifications != null && !modifications.trim().isEmpty()) {
             Modification m = new Modification(modifications); // Crea modification [cite: 464]
-            m.setContent(modifications);                     // Setta il contenuto [cite: 465]
-            m.linkTo(this.selectedEvent, menu);              // Le collega all'evento e al menu [cite: 466]
+            m.setContent(modifications); // Setta il contenuto [cite: 465]
+            m.linkTo(this.selectedEvent, menu); // Le collega all'evento e al menu [cite: 466]
             this.selectedEvent.addModification(m);
         }
 
         // 3. Setta lo stato in progress [cite: 468]
-        this.selectedEvent.setStatus("InProgress");
+        this.selectedEvent.setStatus("In Corso");
 
         // 4. Per ogni servizio, opzionalmente se il servizio ha il menu [cite: 469-471]
         if (this.selectedEvent.getServices() != null) {
@@ -550,7 +511,8 @@ public class EventManager {
                     // Per ogni assegna personale in service.getAssignments() [cite: 472]
                     if (service.getAssignments() != null) {
                         for (StaffAssignment ap : service.getAssignments()) {
-                            // Opzionalmente se ap.isWaitingForMenu() fa setWaitingForMenu(false) [cite: 473-475]
+                            // Opzionalmente se ap.isWaitingForMenu() fa setWaitingForMenu(false) [cite:
+                            // 473-475]
                             if (ap.isWaitingForMenu()) {
                                 ap.setWaitingForMenu(false);
                             }
@@ -565,6 +527,7 @@ public class EventManager {
             er.updateMenuApproved(this.selectedEvent, menu); // [cite: 479]
         }
     }
+
     public Service defineService(String timeSlot, String type) throws UseCaseLogicException {
         if (this.selectedEvent == null) {
             throw new UseCaseLogicException("Nessun evento in gestione.");
@@ -584,6 +547,7 @@ public class EventManager {
 
         return service;
     }
+
     public StaffAssignment assignStaff(StaffMember member, String role, Service service) throws UseCaseLogicException {
         // 1. Solito controllo sull'organizzatore
         User user = CatERing.getInstance().getUserManager().getCurrentUser();
@@ -604,12 +568,12 @@ public class EventManager {
         StaffAssignment ap = new StaffAssignment(role, member, false);
         ap.setRole(role);
         ap.setMember(member);
-        
+
         service.addAssignment(ap);
 
         // 4. Ottiene il menu e fa i controlli
         Menu menu = service.getMenu();
-        
+
         // N.B: Assumiamo che "approvato" nel DB del prof corrisponda a "isPublished()"
         boolean isApproved = (menu != null && menu.isPublished());
 
@@ -653,7 +617,8 @@ public class EventManager {
 
         // Controlla se è in stato preliminare e lancia eccezione
         if ("Preliminare".equals(this.selectedEvent.getStatus())) {
-            throw new UseCaseLogicException("Impossibile confermare: l'evento è ancora in stato Preliminare. Approva prima il menu.");
+            throw new UseCaseLogicException(
+                    "Impossibile confermare: l'evento è ancora in stato Preliminare. Approva prima il menu.");
         }
 
         // Controlla hasServices()
@@ -680,14 +645,14 @@ public class EventManager {
         }
     }
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //Aggiunta metodi per gestire i nostri casi nel test4
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // Aggiunta metodi per gestire i nostri casi nel test4
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //Aggiunta metodi per gestire i nostri casi nel test5
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // Aggiunta metodi per gestire i nostri casi nel test5
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //codice generato per risolvere i warnings
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // codice generato per risolvere i warnings
     public ArrayList<EventReceiver> getEventReceivers() {
         return eventReceivers;
     }
@@ -711,7 +676,7 @@ public class EventManager {
         // SOSTITUITO currentEvent con selectedEvent
         if (motivazioneDeroga != null && !motivazioneDeroga.trim().isEmpty()) {
             this.selectedEvent.setWaiverReason(motivazioneDeroga);
-            this.selectedEvent.setPenalty(false); 
+            this.selectedEvent.setPenalty(false);
         } else {
             this.selectedEvent.setPenalty(penale);
             this.selectedEvent.setWaiverReason(null);
@@ -720,10 +685,11 @@ public class EventManager {
         notifyEventModified(this.selectedEvent);
     }
 
-    //metodo per modificare i dati dell'evento, con i controlli richiesti
-    public void modifyEventData(String clientData, Date startDate, Date endDate, String location, int pax, String notes) throws UseCaseLogicException {
+    // metodo per modificare i dati dell'evento, con i controlli richiesti
+    public void modifyEventData(String clientData, Date startDate, Date endDate, String location, int pax, String notes)
+            throws UseCaseLogicException {
         User user = CatERing.getInstance().getUserManager().getCurrentUser();
-        
+
         if (user == null || !user.isOrganizer()) {
             throw new UseCaseLogicException("Utente non autorizzato: devi essere un Organizzatore.");
         }
@@ -733,7 +699,7 @@ public class EventManager {
         }
 
         // 1. Controllo Eccezione 2d.1b: L'evento non può essere "In Corso"
-        if ("InCorso".equals(this.selectedEvent.getStatus()) || "InProgress".equals(this.selectedEvent.getStatus())) {
+        if ("In Corso".equals(this.selectedEvent.getStatus())) {
             throw new UseCaseLogicException("Impossibile modificare i dati di un evento già in corso.");
         }
 
@@ -750,18 +716,19 @@ public class EventManager {
         this.selectedEvent.setDateEnd(endDate);
         this.selectedEvent.setLocation(location);
         this.selectedEvent.setNumParticipants(pax);
-        
+
         if (notes != null) {
             this.selectedEvent.setNotes(notes);
         }
 
-        // Notifichiamo il database del cambiamento (ora salverà anche la penale a 1 se è scattata)
+        // Notifichiamo il database del cambiamento (ora salverà anche la penale a 1 se
+        // è scattata)
         notifyEventModified(this.selectedEvent);
     }
 
-    public void AnnulledEvent(String motivazioneDeroga, boolean penale) throws UseCaseLogicException {
+    public void cancelEvent(String motivazioneDeroga, boolean penale) throws UseCaseLogicException {
         User user = CatERing.getInstance().getUserManager().getCurrentUser();
-        
+
         if (user == null || !user.isOrganizer()) {
             throw new UseCaseLogicException("Utente non autorizzato: devi essere un Organizzatore.");
         }
@@ -770,8 +737,9 @@ public class EventManager {
             throw new UseCaseLogicException("Nessun evento in gestione.");
         }
 
-        // Estensione 7a: Se l'evento è in corso, l'organizzatore sceglie tra Penale o Deroga
-        if ("InCorso".equals(this.selectedEvent.getStatus()) || "InProgress".equals(this.selectedEvent.getStatus())) {
+        // Estensione 7a: Se l'evento è in corso, l'organizzatore sceglie tra Penale o
+        // Deroga
+        if ("In Corso".equals(this.selectedEvent.getStatus())) {
             if (motivazioneDeroga != null && !motivazioneDeroga.trim().isEmpty()) {
                 this.selectedEvent.setWaiverReason(motivazioneDeroga);
                 this.selectedEvent.setPenalty(false); // Niente penale se c'è deroga
@@ -780,7 +748,8 @@ public class EventManager {
                 this.selectedEvent.setWaiverReason(null);
             }
         } else {
-            // Se l'evento è Preliminare, si annulla semplicemente (nessuna penale/deroga possibile)
+            // Se l'evento è Preliminare, si annulla semplicemente (nessuna penale/deroga
+            // possibile)
             this.selectedEvent.setPenalty(false);
             this.selectedEvent.setWaiverReason(null);
         }
@@ -792,7 +761,7 @@ public class EventManager {
         if (this.selectedEvent.getServices() != null) {
             for (Service s : this.selectedEvent.getServices()) {
                 if (s.getAssignments() != null) {
-                    s.getAssignments().clear(); 
+                    s.getAssignments().clear();
                 }
             }
         }
@@ -800,6 +769,143 @@ public class EventManager {
         // Notifica il DB dell'aggiornamento
         notifyEventModified(this.selectedEvent);
     }
-  
+
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // Aggiunta metodi per terminateEvent
+
+    /**
+     * Termina l'evento attualmente in gestione.
+     * Come da DCD: terminateEvent(historicalNotes: String, documentation: String)
+     * 
+     * Pre-condizioni:
+     * - L'utente deve essere un Organizzatore
+     * - Deve esserci un evento selezionato
+     * - L'evento deve essere in stato "Confermato" o "In Corso"
+     * 
+     * Post-condizioni:
+     * - e.notes = historicalNotes (il modello ha un singolo attributo notes)
+     * - Eventuale documentazione allegata
+     * - e.status = "Chiuso"
+     */
+    public void terminateEvent(String historicalNotes, String documentation) throws UseCaseLogicException {
+        // 1. Controllo permessi utente
+        User user = CatERing.getInstance().getUserManager().getCurrentUser();
+        if (user == null || !user.isOrganizer()) {
+            throw new UseCaseLogicException(
+                    "Utente non autorizzato: devi essere un Organizzatore per terminare un evento.");
+        }
+
+        // 2. Controllo che ci sia un evento selezionato
+        if (this.selectedEvent == null) {
+            throw new UseCaseLogicException("Nessun evento attualmente in gestione da terminare.");
+        }
+
+        // 3. REGOLA DI BUSINESS: La terminazione è permessa solo se l'evento è
+        // Confermato o In Corso
+        String status = this.selectedEvent.getStatus();
+        if (!"Confermato".equals(status) && !"In Corso".equals(status)) {
+            throw new UseCaseLogicException(
+                    "Impossibile terminare l'evento: la terminazione è consentita solo per eventi in stato Confermato o In Corso.");
+        }
+
+        // 4. Allega la documentazione, se fornita (come da DCD: attachDocumentation)
+        if (documentation != null && !documentation.trim().isEmpty()) {
+            Documentation doc = new Documentation(documentation);
+            this.selectedEvent.attachDocumentation(doc);
+        }
+
+        // 5. Segna l'evento come chiuso con le note storiche (come da DCD:
+        // markAsClosed)
+        this.selectedEvent.markAsClosed(historicalNotes);
+
+        // 6. Notifica i receiver per la persistenza
+        notifyEventClosed(this.selectedEvent);
+    }
+
+    private void notifyEventClosed(Event event) {
+        for (EventReceiver er : eventReceivers) {
+            er.updateEventClosed(event);
+        }
+    }
+
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // Aggiunta metodi per modifica ricorrenza
+
+    /**
+     * Modifica la ricorrenza in sé (frequenza e conclusione) di un evento capofila.
+     * Riposiziona le date delle istanze figlie in stato Preliminare senza
+     * distruggerle.
+     */
+    public void modifyRecurrence(String newFrequency, Date newConclusion) throws UseCaseLogicException {
+        User user = CatERing.getInstance().getUserManager().getCurrentUser();
+        if (user == null || !user.isOrganizer()) {
+            throw new UseCaseLogicException("Utente non autorizzato: devi essere un Organizzatore.");
+        }
+
+        if (this.selectedEvent == null || this.selectedEvent.getRecurrenceObj() == null) {
+            throw new UseCaseLogicException("Nessun evento ricorrente in gestione (selezionare il capofila).");
+        }
+
+        Recurrence r = this.selectedEvent.getRecurrenceObj();
+        r.setFrequency(newFrequency);
+        r.setConclusion(newConclusion);
+
+        java.util.Calendar calStart = java.util.Calendar.getInstance();
+        calStart.setTime(this.selectedEvent.getDateStart());
+        java.util.Calendar calEnd = java.util.Calendar.getInstance();
+        calEnd.setTime(this.selectedEvent.getDateEnd());
+
+        ArrayList<Event> generated = r.getGeneratedEvents();
+        int instanceIndex = 0;
+
+        // Avanziamo alla prima occorrenza
+        advanceDate(calStart, newFrequency);
+        advanceDate(calEnd, newFrequency);
+
+        while (!calStart.getTime().after(newConclusion)) {
+            if (instanceIndex < generated.size()) {
+                // Abbiamo un'istanza esistente
+                Event ei = generated.get(instanceIndex);
+                if ("Preliminare".equals(ei.getStatus())) {
+                    // RIUSO: aggiorniamo solo le date dell'istanza preliminare esistente
+                    ei.setDates(new Date(calStart.getTimeInMillis()), new Date(calEnd.getTimeInMillis()));
+                    notifyEventModified(ei);
+                }
+                // Se non è preliminare (es. Confermato, In Corso), la saltiamo (mantiene le sue
+                // vecchie date)
+                instanceIndex++;
+            } else {
+                // Dobbiamo creare nuove istanze (la ricorrenza si è allungata o è più
+                // frequente)
+                Event ei = new Event();
+                ei.copyFrom(this.selectedEvent);
+                ei.setDates(new Date(calStart.getTimeInMillis()), new Date(calEnd.getTimeInMillis()));
+                ei.setRecurrenceObj(r);
+                ei.setStatus("Preliminare");
+                r.addGeneratedEvent(ei);
+                notifyEventCreated(ei); // salva la nuova istanza nel DB
+                instanceIndex++; // incrementiamo per le prossime
+            }
+
+            advanceDate(calStart, newFrequency);
+            advanceDate(calEnd, newFrequency);
+        }
+
+        // Se sono avanzate istanze preliminari che ora cadono oltre la nuova
+        // conclusione, le rimuoviamo.
+        while (instanceIndex < generated.size()) {
+            Event ei = generated.get(instanceIndex);
+            if ("Preliminare".equals(ei.getStatus())) {
+                generated.remove(instanceIndex);
+                notifyEventDeleted(ei); // Rimuove dal DB
+                // Non incrementiamo l'indice perché la lista scala a sinistra
+            } else {
+                // Eventi non preliminari non possono essere eliminati tacitamente
+                instanceIndex++;
+            }
+        }
+
+        notifyEventModified(this.selectedEvent);
+    }
 
 }

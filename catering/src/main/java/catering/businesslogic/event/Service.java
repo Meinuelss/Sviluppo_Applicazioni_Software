@@ -23,8 +23,8 @@ public class Service {
     private int eventId;
     private Menu menu;
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //Attributo per test3
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // Attributo per test3
     private java.util.ArrayList<StaffAssignment> assignments = new java.util.ArrayList<>();
     private String timeSlot;
     private String type;
@@ -290,7 +290,7 @@ public class Service {
         if (this.id > 0 && other.id > 0) {
             return this.id == other.id;
         }
-        
+
         // Otherwise, compare by name and items
         boolean nameMatch = (this.name == null && other.name == null) ||
                 (this.name != null && this.name.equals(other.name));
@@ -301,34 +301,34 @@ public class Service {
 
         // If dates don't match, sections are not equal
         boolean dateMatch = (this.date == null && other.date == null) ||
-        (this.date != null && this.date.equals(other.date));
+                (this.date != null && this.date.equals(other.date));
 
         if (!dateMatch)
             return false;
 
         // If times don't match, sections are not equal
         boolean timeStartMatch = (this.timeStart == null && other.timeStart == null) ||
-        (this.timeStart != null && this.timeStart.equals(other.timeStart));
+                (this.timeStart != null && this.timeStart.equals(other.timeStart));
 
         if (!timeStartMatch)
             return false;
-        
+
         boolean timeEndMatch = (this.timeEnd == null && other.timeEnd == null) ||
-            (this.timeEnd != null && this.timeEnd.equals(other.timeEnd));
-    
+                (this.timeEnd != null && this.timeEnd.equals(other.timeEnd));
+
         if (!timeEndMatch)
-            return false;        
+            return false;
 
         // If locations don't match, sections are not equal
         boolean locationMatch = (this.location == null && other.location == null) ||
-        (this.location != null && this.location.equals(other.location));
+                (this.location != null && this.location.equals(other.location));
 
         if (!locationMatch)
             return false;
 
         // If locations don't match, sections are not equal
         boolean menuMatch = (this.menu == null && other.menu == null) ||
-        (this.menu != null && this.menu.equals(other.menu));
+                (this.menu != null && this.menu.equals(other.menu));
 
         if (!menuMatch)
             return false;
@@ -341,22 +341,26 @@ public class Service {
         return true;
     }
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     // aggiunto metodo per test3
     public java.util.ArrayList<StaffAssignment> getAssignments() {
         return this.assignments;
     }
+
     public void setTimeSlot(String timeSlot) {
         this.timeSlot = timeSlot;
     }
+
     public void setType(String type) {
         this.type = type;
     }
+
     public void addAssignment(StaffAssignment ap) {
         this.assignments.add(ap);
     }
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //Codice generato per eliminare warnings
+
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // Codice generato per eliminare warnings
     public void setAssignments(ArrayList<StaffAssignment> assignments) {
         this.assignments = assignments;
     }

@@ -54,10 +54,10 @@ public class EventPersistence implements EventReceiver {
 
     //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     // metodo per test3
-// Metodo chiamato quando il menu viene approvato e l'evento va InProgress
+// Metodo chiamato quando il menu viene approvato e l'evento va In Corso
     @Override
     public void updateMenuApproved(Event e, Menu m) {
-        e.updateEvent(); // Salva lo stato "InProgress" nel DB
+        e.updateEvent(); // Salva lo stato "In Corso" nel DB
     }
 
     // Metodo chiamato quando l'evento viene Confermato definitivamente
@@ -73,5 +73,12 @@ public class EventPersistence implements EventReceiver {
     @Override
     public void updateStaffAssigned(Service service, StaffAssignment ap) {
         
+    }
+
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // metodo per terminateEvent
+    @Override
+    public void updateEventClosed(Event e) {
+        e.updateEvent(); // Salva lo stato "Chiuso" e le note storiche nel DB
     }
 }

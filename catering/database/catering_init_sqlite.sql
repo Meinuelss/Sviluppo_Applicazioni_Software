@@ -1,5 +1,6 @@
 -- database: catering.db
 -- 1) FIRST REMOVE ALL TABLES (in reverse dependency order)
+DROP TABLE IF EXISTS `Recurrences`;
 DROP TABLE IF EXISTS `Assignment`;
 
 DROP TABLE IF EXISTS `Tasks`;
@@ -80,7 +81,15 @@ CREATE TABLE
         `notes` TEXT,
         `type_event` INTEGER DEFAULT 0,
         `penalty` INTEGER DEFAULT 0,
-        `waiver_reason` TEXT
+        `waiver_reason` TEXT,
+        `recurrence_id` INTEGER DEFAULT 0
+    );
+
+CREATE TABLE
+    `Recurrences` (
+        `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+        `frequency` TEXT,
+        `conclusion` DATE
     );
 
 CREATE TABLE

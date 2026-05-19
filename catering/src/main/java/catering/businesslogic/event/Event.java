@@ -22,28 +22,32 @@ public class Event {
     private User chef;
     private ArrayList<Service> services;
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //attributi per il test1
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // attributi per il test1
     private String status;
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //attributi per il test2
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // attributi per il test2
     private String clientData;
     private String location;
     private int numParticipants;
     private String notes;
     private Recurrence recurrenceObj;
-    private boolean typeEvent; //true = complesso, false = semplice
+    private boolean typeEvent; // true = complesso, false = semplice
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //attributi per il test3
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // attributi per il test3
     private ArrayList<Modification> modifications = new ArrayList<>();
     private int chef_id = 0;
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //attributi per il test4
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // attributi per il test4
     private boolean penalty;
     private String waiverReason;
+
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // attributi per terminateEvent
+    private ArrayList<Documentation> documentations = new ArrayList<>();
 
     public Event() {
         services = new ArrayList<>();
@@ -142,14 +146,16 @@ public class Event {
 
     // Database operations
     public void saveNewEvent() {
+        if (this.recurrenceObj != null && this.recurrenceObj.getIdRecurrence() == 0) {
+            this.recurrenceObj.saveNewRecurrence();
+        }
+        int recId = (this.recurrenceObj != null) ? this.recurrenceObj.getIdRecurrence() : 0;
 
-        String query = "INSERT INTO Events (name, date_start, date_end, chef_id, type_event, status, client_data, location, num_participants, notes, penalty, waiver_reason) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Events (name, date_start, date_end, chef_id, type_event, status, client_data, location, num_participants, notes, penalty, waiver_reason, recurrence_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        Long startTimestamp = (dateStart != null) ? dateStart.getTime() : null;
-        Long endTimestamp = (dateEnd != null) ? dateEnd.getTime() : null;
-
-        PersistenceManager.executeUpdate(query, name, startTimestamp, endTimestamp, getChefId(), getTypeEvent(),
-                                         status, clientData, location, numParticipants, notes, penalty, waiverReason);
+        PersistenceManager.executeUpdate(query, name, dateStart, dateEnd,
+                getChefId(), getTypeEvent(), status, clientData, location, numParticipants,
+                notes, penalty, waiverReason, recId);
 
         // Get the ID of the newly inserted event
         id = PersistenceManager.getLastId();
@@ -157,12 +163,20 @@ public class Event {
     }
 
     public void updateEvent() {
-        String query = "UPDATE Events SET name = ?, date_start = ?, date_end = ?, chef_id = ?, type_event = ?, status = ?, client_data = ?, location = ?, num_participants = ?, notes = ?, penalty = ?, waiver_reason = ? WHERE id = ?";
-        Long startTimestamp = (dateStart != null) ? dateStart.getTime() : null;
-        Long endTimestamp = (dateEnd != null) ? dateEnd.getTime() : null;
+        if (this.recurrenceObj != null) {
+            if (this.recurrenceObj.getIdRecurrence() == 0) {
+                this.recurrenceObj.saveNewRecurrence();
+            } else {
+                this.recurrenceObj.updateRecurrence();
+            }
+        }
+        int recId = (this.recurrenceObj != null) ? this.recurrenceObj.getIdRecurrence() : 0;
 
-        PersistenceManager.executeUpdate(query, name, startTimestamp, endTimestamp, getChefId(), getTypeEvent(), status, clientData, location, numParticipants, notes, penalty, waiverReason, id);
+        String query = "UPDATE Events SET name = ?, date_start = ?, date_end = ?, chef_id = ?, type_event = ?, status = ?, client_data = ?, location = ?, num_participants = ?, notes = ?, penalty = ?, waiver_reason = ?, recurrence_id = ? WHERE id = ?";
 
+        PersistenceManager.executeUpdate(query, name, dateStart, dateEnd,
+                getChefId(), getTypeEvent(), status, clientData, location, numParticipants,
+                notes, penalty, waiverReason, recId, id);
     }
 
     public boolean deleteEvent() {
@@ -249,7 +263,6 @@ public class Event {
                 e.notes = rs.getString("notes");
                 e.penalty = rs.getBoolean("penalty");
                 e.waiverReason = rs.getString("waiver_reason");
-                
 
                 try {
                     e.chef = User.load(rs.getInt("chef_id"));
@@ -283,25 +296,60 @@ public class Event {
                 ", services=" + (services != null ? services.size() : 0) + "]";
     }
 
-    //^^^^^^^^^^^^^
-    //aggiunta metodi per test1
+    // ^^^^^^^^^^^^^
+    // aggiunta metodi per test1
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public String getStatus() {
+        return status;
+    }
 
-    //^^^^^^^^^^^^^
-    //aggiunta metodi per test2
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-    public String getClientData() { return clientData; }
-    public void setClientData(String clientData) { this.clientData = clientData; }
-    public String getLocation() { return location; }
-    public void setLocation(String location) { this.location = location; }
-    public int getNumParticipants() { return numParticipants; }
-    public void setNumParticipants(int numParticipants) { this.numParticipants = numParticipants; }
-    public String getNotes() { return notes; }
-    public void setNotes(String notes) { this.notes = notes; }
-    public void setRecurrenceObj(Recurrence r) { this.recurrenceObj = r;}
-    public Recurrence getRecurrenceObj() { return this.recurrenceObj;}
+    // ^^^^^^^^^^^^^
+    // aggiunta metodi per test2
+
+    public String getClientData() {
+        return clientData;
+    }
+
+    public void setClientData(String clientData) {
+        this.clientData = clientData;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public int getNumParticipants() {
+        return numParticipants;
+    }
+
+    public void setNumParticipants(int numParticipants) {
+        this.numParticipants = numParticipants;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public void setRecurrenceObj(Recurrence r) {
+        this.recurrenceObj = r;
+    }
+
+    public Recurrence getRecurrenceObj() {
+        return this.recurrenceObj;
+    }
+
     public void copyFrom(Event e) {
         this.name = e.name;
         this.clientData = e.clientData;
@@ -309,33 +357,39 @@ public class Event {
         this.numParticipants = e.numParticipants;
         this.notes = e.notes;
     }
+
     public void setDates(Date startDate, Date endDate) {
         this.dateStart = startDate;
         this.dateEnd = endDate;
     }
 
-     //^^^^^^^^^^^^^
-    //aggiunta metodi per test3
+    // ^^^^^^^^^^^^^
+    // aggiunta metodi per test3
     public void addModification(Modification mod) {
         this.modifications.add(mod);
     }
+
     public ArrayList<Modification> getModifications() {
         return this.modifications;
     }
+
     public boolean hasServices() {
         return this.services != null && !this.services.isEmpty();
     }
+
     public boolean hasChef() {
-        // Usa chef_id se mappato con l'intero, oppure this.chef != null se usi l'oggetto
-        return this.chef_id > 0 || this.chef != null; 
+        // Usa chef_id se mappato con l'intero, oppure this.chef != null se usi
+        // l'oggetto
+        return this.chef_id > 0 || this.chef != null;
     }
+
     public boolean isValid() {
         // Un evento è valido se ha sia servizi che uno chef
         return this.hasServices() && this.hasChef();
     }
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //Codice generato per risolvere i warnings
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // Codice generato per risolvere i warnings
     public void setModifications(ArrayList<Modification> modifications) {
         this.modifications = modifications;
     }
@@ -348,8 +402,8 @@ public class Event {
         this.chef_id = chef_id;
     }
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //Aggiunta metodi per test4
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // Aggiunta metodi per test4
 
     public boolean hasPenalty() {
         return penalty;
@@ -367,20 +421,54 @@ public class Event {
         this.waiverReason = waiverReason;
     }
 
-    //metodo oer verificare se la modifica al numero di partecipanti è valida (entro il 30% del numero attuale)
+    // metodo oer verificare se la modifica al numero di partecipanti è valida
+    // (entro il 30% del numero attuale)
     public boolean canModifyParticipants(int newNum) {
-        // Se l'evento non aveva ancora partecipanti (es. appena creato), la modifica è sempre valida
+        // Se l'evento non aveva ancora partecipanti (es. appena creato), la modifica è
+        // sempre valida
         if (this.numParticipants == 0) {
             return true;
         }
 
         // Calcoliamo la differenza assoluta tra il vecchio e il nuovo numero
         double variazioneAssoluta = Math.abs(newNum - this.numParticipants);
-        
+
         // Calcoliamo la soglia massima consentita (30% del numero attuale)
         double sogliaMassima = this.numParticipants * 0.30;
 
         // Ritorna true se la variazione è entro la soglia
         return variazioneAssoluta <= sogliaMassima;
+    }
+
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // Aggiunta metodi per terminateEvent
+
+    /**
+     * Segna l'evento come chiuso, salvando le note storiche.
+     * Come da contratto chiudiEvento: e.note = noteStoriche
+     * (il modello ha un singolo attributo notes, scelta di modellazione dichiarata)
+     */
+    public void markAsClosed(String historicalNotes) {
+        this.notes = historicalNotes;
+        this.status = "Chiuso";
+    }
+
+    /**
+     * Allega una documentazione all'evento.
+     * Come da DCD: attachDocumentation(doc: Documentation)
+     */
+    public void attachDocumentation(Documentation doc) {
+        if (this.documentations == null) {
+            this.documentations = new ArrayList<>();
+        }
+        this.documentations.add(doc);
+    }
+
+    public ArrayList<Documentation> getDocumentations() {
+        return this.documentations;
+    }
+
+    public void setDocumentations(ArrayList<Documentation> documentations) {
+        this.documentations = documentations;
     }
 }

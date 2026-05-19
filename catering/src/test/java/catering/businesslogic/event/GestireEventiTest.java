@@ -38,20 +38,22 @@ class GestireEventiTest {
         // =========================================================
         // PARTE 1: TEST FALLIMENTO (Utente NON autorizzato)
         // =========================================================
-        // ARRANGE: Facciamo il login con un utente che NON è organizzatore (es. Luca è un Cuoco)
+        // ARRANGE: Facciamo il login con un utente che NON è organizzatore (es. Luca è
+        // un Cuoco)
         CatERing.getInstance().getUserManager().fakeLogin("Luca");
 
         // ACT & ASSERT: Proviamo a creare l'evento e ci aspettiamo l'eccezione
         UseCaseLogicException eccezione = assertThrows(UseCaseLogicException.class, () -> {
             eventMgr.createEventCard("Festa Vietata");
         });
-        assertEquals("Utente non autorizzato: devi essere un Organizzatore per creare un evento.", eccezione.getMessage());
-
+        assertEquals("Utente non autorizzato: devi essere un Organizzatore per creare un evento.",
+                eccezione.getMessage());
 
         // =========================================================
         // PARTE 2: TEST SUCCESSO CON TITOLO (Utente autorizzato)
         // =========================================================
-        // ARRANGE: Facciamo il login con un Organizzatore ("Giovanni" è organizzatore nel DB)
+        // ARRANGE: Facciamo il login con un Organizzatore ("Giovanni" è organizzatore
+        // nel DB)
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
 
         // ACT: L'organizzatore crea un nuovo evento con titolo
@@ -59,11 +61,10 @@ class GestireEventiTest {
 
         // ASSERT: Verifico le post-condizioni
         assertAll("Verifica evento creato con titolo",
-            () -> assertNotNull(eventoConTitolo),
-            () -> assertEquals("Festa di Laurea", eventoConTitolo.getName()), // Titolo settato
-            () -> assertEquals("Preliminare", eventoConTitolo.getStatus()),  // Stato corretto
-            () -> assertTrue(eventoConTitolo.getId() > 0, "Salvato tramite EventReceiver nel DB")
-        );
+                () -> assertNotNull(eventoConTitolo),
+                () -> assertEquals("Festa di Laurea", eventoConTitolo.getName()), // Titolo settato
+                () -> assertEquals("Preliminare", eventoConTitolo.getStatus()), // Stato corretto
+                () -> assertTrue(eventoConTitolo.getId() > 0, "Salvato tramite EventReceiver nel DB"));
 
         // =========================================================
         // PARTE 3: TEST SUCCESSO SENZA TITOLO (Titolo opzionale)
@@ -73,27 +74,26 @@ class GestireEventiTest {
 
         // ASSERT: Verifico che funzioni lo stesso
         assertAll("Verifica evento creato senza titolo",
-            () -> assertNotNull(eventoSenzaTitolo),
-            () -> assertNull(eventoSenzaTitolo.getName()), // Il titolo non è stato settato
-            () -> assertEquals("Preliminare", eventoSenzaTitolo.getStatus())
-        );
+                () -> assertNotNull(eventoSenzaTitolo),
+                () -> assertNull(eventoSenzaTitolo.getName()), // Il titolo non è stato settato
+                () -> assertEquals("Preliminare", eventoSenzaTitolo.getStatus()));
     }
 
     // --- DSD 2: INSERISCI DATI (Con controllo Organizzatore e Ricorrenza) ---
     @Test
     @DisplayName("DSD 2: Inserisci i dati, verifica permessi e genera Ricorrenza")
     void test2_InserisciDati() throws Exception {
-        
+
         // =========================================================
         // PARTE 1: TEST FALLIMENTO (Utente non Organizzatore)
         // =========================================================
-        // ARRANGE: Facciamo il login come ORGANIZZATORE per poter creare l'evento di base
+        // ARRANGE: Facciamo il login come ORGANIZZATORE per poter creare l'evento di
+        // base
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
         eventMgr.createEventCard("Meeting Aziendale");
-        
+
         Date dataInizio = new Date(System.currentTimeMillis() + 86400000L); // Domani
-        Date dataFine = new Date(System.currentTimeMillis() + 172800000L);  // Dopodomani
-        System.out.println("Data Inizio: " + dataInizio);
+        Date dataFine = new Date(System.currentTimeMillis() + 172800000L); // Dopodomani
 
         // ORA CAMBIAMO UTENTE: Facciamo il login con un utente NON organizzatore (Luca)
         CatERing.getInstance().getUserManager().fakeLogin("Luca");
@@ -104,65 +104,63 @@ class GestireEventiTest {
         });
         assertEquals("Utente non autorizzato: devi essere un Organizzatore.", eccezione.getMessage());
 
-
         // =========================================================
         // PARTE 2: TEST SUCCESSO CON RICORRENZA (Utente Organizzatore)
         // =========================================================
-        // (Lascia il resto del test esattamente com'era prima, partendo dal fakeLogin di Giovanni)
+        // (Lascia il resto del test esattamente com'era prima, partendo dal fakeLogin
+        // di Giovanni)
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
-        
+
         eventMgr.createEventCard("Congresso Medico Ricorrente");
         Date conclusioneRicorrenza = new Date(System.currentTimeMillis() + (30L * 24 * 60 * 60 * 1000)); // Tra un mese
 
-
         assertDoesNotThrow(() -> {
             eventMgr.insertData(
-                "Ospedale Maggiore", 
-                dataInizio, 
-                dataFine, 
-                "Auditorium Centrale", 
-                150, 
-                "Richiesto servizio interpretariato", 
-                true,                                  
-                "Settimanale",                         
-                conclusioneRicorrenza                  
-            );
+                    "Ospedale Maggiore",
+                    dataInizio,
+                    dataFine,
+                    "Auditorium Centrale",
+                    150,
+                    "Richiesto servizio interpretariato",
+                    true,
+                    "Settimanale",
+                    conclusioneRicorrenza);
         });
 
         Event eventoCapofila = eventMgr.getSelectedEvent();
         assertAll("Verifica post-condizioni DSD 2",
-            () -> assertNotNull(eventoCapofila),
-            () -> assertEquals("Ospedale Maggiore", eventoCapofila.getClientData()),
-            () -> assertEquals("Auditorium Centrale", eventoCapofila.getLocation()),
-            () -> assertEquals(150, eventoCapofila.getNumParticipants()),
-            () -> assertEquals("Richiesto servizio interpretariato", eventoCapofila.getNotes()),
-            () -> assertNotNull(eventoCapofila.getRecurrenceObj(), "L'oggetto Recurrence deve essere stato creato"),
-            () -> assertEquals("Settimanale", eventoCapofila.getRecurrenceObj().getFrequency()),
-            () -> assertEquals(conclusioneRicorrenza, eventoCapofila.getRecurrenceObj().getConclusion())
-        );
+                () -> assertNotNull(eventoCapofila),
+                () -> assertEquals("Ospedale Maggiore", eventoCapofila.getClientData()),
+                () -> assertEquals("Auditorium Centrale", eventoCapofila.getLocation()),
+                () -> assertEquals(150, eventoCapofila.getNumParticipants()),
+                () -> assertEquals("Richiesto servizio interpretariato", eventoCapofila.getNotes()),
+                () -> assertNotNull(eventoCapofila.getRecurrenceObj(), "L'oggetto Recurrence deve essere stato creato"),
+                () -> assertEquals("Settimanale", eventoCapofila.getRecurrenceObj().getFrequency()),
+                () -> assertEquals(conclusioneRicorrenza, eventoCapofila.getRecurrenceObj().getConclusion()));
     }
 
     // --- TEST 3: APPROVA MENU (Estensione 4a) ---
     @Test
     @DisplayName("DSD 3: Approva Menu con controllo Organizzatore, modifiche opzionali e sblocco staff")
     void test3_ApprovaMenu() throws Exception {
-        
+
         // =========================================================
         // PARTE 1: TEST FALLIMENTO (Utente non Organizzatore)
         // =========================================================
         // ARRANGE: Creiamo un evento da organizzatore
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
         eventMgr.createEventCard("Cena di Gala del Personale");
-        
+
         // Carichiamo il menu di esempio pre-configurato nel DB (ID 1)
         catering.businesslogic.menu.Menu menu = catering.businesslogic.menu.Menu.load(1);
-        
-        // FIX: Impostiamo il menu come NON pubblicato (bozza) per testare correttamente l'attesa!
+
+        // FIX: Impostiamo il menu come NON pubblicato (bozza) per testare correttamente
+        // l'attesa!
         menu.setPublished(false);
-        
+
         // Cambiamo utente a Luca (Cuoco) per tentare l'approvazione non autorizzata
         CatERing.getInstance().getUserManager().fakeLogin("Luca");
-        
+
         // ACT & ASSERT: Deve lanciare UseCaseLogicException
         assertThrows(UseCaseLogicException.class, () -> {
             eventMgr.approveMenu(menu, "Cambiare il dolce in Tiramisù");
@@ -173,48 +171,60 @@ class GestireEventiTest {
         // =========================================================
         // ARRANGE: Torniamo all'utente Organizzatore autorizzato
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
-        
+
         // Definiamo un servizio e colleghiamogli il menu
         Service servizio = eventMgr.defineService("20:00 - 23:00", "Cena Elegante");
+        servizio.setName("Cena Elegante");
+        servizio.setTimeStart(java.sql.Time.valueOf("20:00:00"));
+        servizio.setTimeEnd(java.sql.Time.valueOf("23:00:00"));
+        servizio.updateService();
         servizio.setMenu(menu);
-        
-        // Assegniamo un membro dello staff disponibile (risulterà in attesa perché il menu non è approvato)
+
+        // Assegniamo un membro dello staff disponibile (risulterà in attesa perché il
+        // menu non è approvato)
         StaffMember cameriere = new StaffMember("Luigi");
         cameriere.setAvailable(true);
         StaffAssignment ap = eventMgr.assignStaff(cameriere, "Responsabile di Sala", servizio);
-        
+
         // Verifica preliminare: lo staff è effettivamente bloccato in attesa del menu
         assertTrue(ap.isWaitingForMenu(), "Prima dell'approvazione lo staff deve essere in attesa");
 
-        // ACT: L'organizzatore approva ufficialmente il menu inserendo delle modifiche testuali
+        // ACT: L'organizzatore approva ufficialmente il menu inserendo delle modifiche
+        // testuali
         assertDoesNotThrow(() -> {
             eventMgr.approveMenu(menu, "Sostituire vino bianco con rosso d'annata");
         });
 
-        // ASSERT: Verifichiamo lo scatto di stato dell'evento e lo sblocco automatico dello staff
+        // ASSERT: Verifichiamo lo scatto di stato dell'evento e lo sblocco automatico
+        // dello staff
         Event e = eventMgr.getSelectedEvent();
         assertAll("Verifica post-condizioni DSD Approva Menu",
-            () -> assertNotNull(e),
-            () -> assertEquals("InProgress", e.getStatus(), "L'evento deve passare in stato InProgress"),
-            () -> assertFalse(ap.isWaitingForMenu(), "Lo staff NON deve più essere in attesa (inAttesaDiMenu = false)"),
-            () -> assertEquals(1, e.getModifications().size(), "Deve essere registrata una modifica nel sistema"),
-            () -> assertEquals("Sostituire vino bianco con rosso d'annata", e.getModifications().get(0).getContent())
-        );
+                () -> assertNotNull(e),
+                () -> assertEquals("In Corso", e.getStatus(), "L'evento deve passare in stato In Corso"),
+                () -> assertFalse(ap.isWaitingForMenu(),
+                        "Lo staff NON deve più essere in attesa (inAttesaDiMenu = false)"),
+                () -> assertEquals(1, e.getModifications().size(), "Deve essere registrata una modifica nel sistema"),
+                () -> assertEquals("Sostituire vino bianco con rosso d'annata",
+                        e.getModifications().get(0).getContent()));
     }
 
     // --- DSD4: ASSEGNA PERSONALE (DSD 5) ---
     @Test
     @DisplayName("TEST 3: Assegna Personale con controllo Organizzatore, Disponibilità e Menu")
     void test3_AssegnaPersonale() throws Exception {
-        
+
         // =========================================================
         // PARTE 1: TEST FALLIMENTO (Utente non Organizzatore)
         // =========================================================
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni"); // Login come organizzatore
         eventMgr.createEventCard("Buffet Estivo");
         Service servizio = assertDoesNotThrow(() -> eventMgr.defineService("19:00 - 22:00", "Apericena"));
-        
-        StaffMember cameriere = new StaffMember("Marco"); 
+        servizio.setName("Apericena");
+        servizio.setTimeStart(java.sql.Time.valueOf("19:00:00"));
+        servizio.setTimeEnd(java.sql.Time.valueOf("22:00:00"));
+        servizio.updateService();
+
+        StaffMember cameriere = new StaffMember("Marco");
         cameriere.setAvailable(true);
 
         // Cambiamo utente (Luca è Cuoco, non Organizzatore)
@@ -225,12 +235,11 @@ class GestireEventiTest {
         });
         assertEquals("Utente non autorizzato: devi essere un Organizzatore.", eccezioneOrg.getMessage());
 
-
         // =========================================================
         // PARTE 2: TEST FALLIMENTO (Membro non disponibile)
         // =========================================================
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni"); // Torniamo Organizzatore
-        
+
         StaffMember cameriereOccupato = new StaffMember("Anna");
         cameriereOccupato.setAvailable(false); // Settiamo il membro come NON disponibile
 
@@ -238,7 +247,6 @@ class GestireEventiTest {
             eventMgr.assignStaff(cameriereOccupato, "Sommelier", servizio);
         });
         assertEquals("Il membro del personale non è disponibile per questo turno.", eccezioneDisp.getMessage());
-
 
         // =========================================================
         // PARTE 3: TEST SUCCESSO (Membro disponibile, Menu mancante)
@@ -250,44 +258,43 @@ class GestireEventiTest {
 
         // ASSERT: Verifichiamo tutte le post-condizioni
         assertAll("Verifica post-condizioni Assegna Personale",
-            () -> assertNotNull(assegnamento),
-            () -> assertEquals("Cameriere", assegnamento.getRole()),
-            () -> assertEquals("Marco", assegnamento.getMember().getName()),
-            // Poiché non abbiamo settato alcun menu per questo servizio, deve risultare in attesa
-            () -> assertTrue(assegnamento.isWaitingForMenu(), "Il menu è null, quindi inAttesaDiMenu deve essere true"),
-            () -> assertTrue(servizio.getAssignments().contains(assegnamento))
-        );
+                () -> assertNotNull(assegnamento),
+                () -> assertEquals("Cameriere", assegnamento.getRole()),
+                () -> assertEquals("Marco", assegnamento.getMember().getName()),
+                // Poiché non abbiamo settato alcun menu per questo servizio, deve risultare in
+                // attesa
+                () -> assertTrue(assegnamento.isWaitingForMenu(),
+                        "Il menu è null, quindi inAttesaDiMenu deve essere true"),
+                () -> assertTrue(servizio.getAssignments().contains(assegnamento)));
     }
-    
 
     // --- DSD5: CONFERMA EVENTO ---
     @Test
     @DisplayName("TEST 5: Conferma Evento con controlli su stato, servizi e chef")
     void test5_ConfermaEvento() throws Exception {
-        
+
         // =========================================================
         // PARTE 1: TEST FALLIMENTO (Utente non Organizzatore)
         // =========================================================
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
         eventMgr.createEventCard("Festa di Fine Anno");
         Event e = eventMgr.getSelectedEvent();
-        
+
         CatERing.getInstance().getUserManager().fakeLogin("Luca"); // Cuoco
         UseCaseLogicException exUser = assertThrows(UseCaseLogicException.class, () -> eventMgr.confirmEvent());
         assertTrue(exUser.getMessage().contains("Organizzatore"));
-
 
         // =========================================================
         // PARTE 2: TEST FALLIMENTO (Stato Preliminare)
         // =========================================================
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni"); // Torniamo Organizzatore
-        
+
         UseCaseLogicException exStato = assertThrows(UseCaseLogicException.class, () -> eventMgr.confirmEvent());
         assertTrue(exStato.getMessage().contains("Preliminare"));
 
-        // Forziamo lo stato a InProgress (simulando che l'approvazione del menu sia già avvenuta)
-        e.setStatus("InProgress");
-
+        // Forziamo lo stato a In Corso (simulando che l'approvazione del menu sia già
+        // avvenuta)
+        e.setStatus("In Corso");
 
         // =========================================================
         // PARTE 3: TEST FALLIMENTO (Nessun Servizio)
@@ -296,8 +303,11 @@ class GestireEventiTest {
         assertTrue(exServizi.getMessage().contains("servizi"));
 
         // Aggiungiamo un servizio per superare il blocco
-        eventMgr.defineService("12:00 - 15:00", "Pranzo");
-
+        Service serv = eventMgr.defineService("12:00 - 15:00", "Pranzo");
+        serv.setName("Pranzo");
+        serv.setTimeStart(java.sql.Time.valueOf("12:00:00"));
+        serv.setTimeEnd(java.sql.Time.valueOf("15:00:00"));
+        serv.updateService();
 
         // =========================================================
         // PARTE 4: TEST FALLIMENTO (Nessuno Chef)
@@ -306,8 +316,7 @@ class GestireEventiTest {
         assertTrue(exChef.getMessage().contains("chef"));
 
         // Assegniamo uno chef (ID 7 è lo Chef Giovanni nel DB) per superare il blocco
-        e.setChefId(7); 
-
+        e.setChefId(7);
 
         // =========================================================
         // PARTE 5: TEST SUCCESSO (Tutti i requisiti soddisfatti)
@@ -324,47 +333,49 @@ class GestireEventiTest {
     @Test
     @DisplayName("ECC 7a.1a: Inserisci Deroga Penale con annullamento della penale")
     void test_InserisciDerogaPenale() throws Exception {
-        
+
         // =========================================================
         // ARRANGE: Setup dell'evento e dello stato
         // =========================================================
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
         eventMgr.createEventCard("Cena di Gala di Prova");
         Event eventoCorrente = eventMgr.getSelectedEvent();
-        
-        // Forziamo manualmente lo stato dell'evento per simulare che i lavori siano iniziati
-        eventoCorrente.setStatus("InCorso");
-        
+
+        // Forziamo manualmente lo stato dell'evento per simulare che i lavori siano
+        // iniziati
+        eventoCorrente.setStatus("In Corso");
+
         // =========================================================
         // ACT: Inserimento della deroga
         // =========================================================
         assertDoesNotThrow(() -> {
             eventMgr.inserisciDerogaPenale("Ritardo dovuto a cause di forza maggiore", false);
         });
-        
+
         // =========================================================
         // ASSERT: Verifiche delle post-condizioni
         // =========================================================
         assertAll("Verifica post-condizioni Deroga Penale",
-            () -> assertFalse(eventoCorrente.hasPenalty(), "La penale NON deve essere applicata se è stata concessa una deroga."),
-            () -> assertEquals("Ritardo dovuto a cause di forza maggiore", eventoCorrente.getWaiverReason(), "La motivazione della deroga deve essere salvata correttamente.")
-        );
+                () -> assertFalse(eventoCorrente.hasPenalty(),
+                        "La penale NON deve essere applicata se è stata concessa una deroga."),
+                () -> assertEquals("Ritardo dovuto a cause di forza maggiore", eventoCorrente.getWaiverReason(),
+                        "La motivazione della deroga deve essere salvata correttamente."));
     }
 
     // --- ESTENSIONE 2D: MODIFICA DATI (Regola del 30%) ---
     @Test
     @DisplayName("EST 2D: Modifica Dati con applicazione Penale per >30% e blocco In Corso")
     void test_ModificaDatiVincoli() throws Exception {
-        
+
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
-        
+
         // Creiamo e impostiamo un evento a 100 partecipanti
         eventMgr.createEventCard("Festa Aziendale 30%");
         Date dataInizio = new Date(System.currentTimeMillis() + 86400000L);
-        Date dataFine = new Date(System.currentTimeMillis() + 172800000L);  // Dopodomani
+        Date dataFine = new Date(System.currentTimeMillis() + 172800000L); // Dopodomani
         eventMgr.insertData("Azienda Spa", dataInizio, dataFine, "Sala Centrale", 100, "", false, null, null);
         Event eventoSelezionato = eventMgr.getSelectedEvent();
-        
+
         // =========================================================
         // PARTE 1: MODIFICA VALIDA (entro il 30%) -> NESSUNA PENALE
         // =========================================================
@@ -389,13 +400,14 @@ class GestireEventiTest {
         // PARTE 3: MODIFICA SU EVENTO IN CORSO -> ECCEZIONE 2d.1b
         // =========================================================
         // Forziamo lo stato a In Corso
-        eventoSelezionato.setStatus("InCorso");
-        
+        eventoSelezionato.setStatus("In Corso");
+
         UseCaseLogicException exInCorso = assertThrows(UseCaseLogicException.class, () -> {
             // Cerchiamo di fare una modifica
             eventMgr.modifyEventData("Azienda Spa", dataInizio, dataFine, "Sala Centrale", 120, "");
         });
-        assertTrue(exInCorso.getMessage().contains("Impossibile modificare"), "Deve impedire qualsiasi modifica se l'evento è in corso");
+        assertTrue(exInCorso.getMessage().contains("Impossibile modificare"),
+                "Deve impedire qualsiasi modifica se l'evento è in corso");
     }
 
     // --- ANNULLAMENTO EVENTO PRELIMINARE (Senza Penale) ---
@@ -403,65 +415,64 @@ class GestireEventiTest {
     @DisplayName("Annullamento evento Preliminare: Nessuna penale applicata a prescindere dai parametri")
     void test_AnnullamentoEventoPreliminare() throws Exception {
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
-        
+
         eventMgr.createEventCard("Evento da Annullare Subito");
         Event e = eventMgr.getSelectedEvent();
-        
-        // L'evento è "Preliminare". Proviamo ad annullarlo passando "true" per la penale:
+
+        // L'evento è "Preliminare". Proviamo ad annullarlo passando "true" per la
+        // penale:
         // Il sistema deve ignorarla perché la penale si applica SOLO se InCorso!
         assertDoesNotThrow(() -> {
-            eventMgr.AnnulledEvent(null, true);
+            eventMgr.cancelEvent(null, true);
         });
 
         assertAll("Verifica Annullamento Preliminare",
-            () -> assertEquals("Annullato", e.getStatus(), "Lo stato deve cambiare in Annullato"),
-            () -> assertFalse(e.hasPenalty(), "La penale NON deve scattare in fase preliminare, anche se richiesta"),
-            () -> assertNull(e.getWaiverReason())
-        );
+                () -> assertEquals("Annullato", e.getStatus(), "Lo stato deve cambiare in Annullato"),
+                () -> assertFalse(e.hasPenalty(),
+                        "La penale NON deve scattare in fase preliminare, anche se richiesta"),
+                () -> assertNull(e.getWaiverReason()));
     }
 
     // --- ESTENSIONE 7A: ANNULLAMENTO EVENTO IN CORSO (Penale o Deroga) ---
     @Test
     @DisplayName("EST 7a: Annullamento evento In Corso con scelta tra Penale o Deroga")
     void test_AnnullamentoEventoInCorso() throws Exception {
-        
+
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
-        
+
         // =========================================================
         // SCENARIO A: Annullamento con PENALE
         // =========================================================
         eventMgr.createEventCard("Pranzo con Penale");
         Event eventoPenale = eventMgr.getSelectedEvent();
-        eventoPenale.setStatus("InCorso"); // Simuliamo che sia in corso
-        
+        eventoPenale.setStatus("In Corso"); // Simuliamo che sia in corso
+
         assertDoesNotThrow(() -> {
             // Nessuna motivazione (null), applicazione penale = true
-            eventMgr.AnnulledEvent(null, true);
+            eventMgr.cancelEvent(null, true);
         });
-        
+
         assertAll("Verifica Scenario Penale",
-            () -> assertEquals("Annullato", eventoPenale.getStatus()),
-            () -> assertTrue(eventoPenale.hasPenalty(), "La penale deve essere applicata"),
-            () -> assertNull(eventoPenale.getWaiverReason())
-        );
+                () -> assertEquals("Annullato", eventoPenale.getStatus()),
+                () -> assertTrue(eventoPenale.hasPenalty(), "La penale deve essere applicata"),
+                () -> assertNull(eventoPenale.getWaiverReason()));
 
         // =========================================================
         // SCENARIO B: Annullamento con DEROGA
         // =========================================================
         eventMgr.createEventCard("Pranzo con Deroga");
         Event eventoDeroga = eventMgr.getSelectedEvent();
-        eventoDeroga.setStatus("InCorso"); // Simuliamo che sia in corso
-        
+        eventoDeroga.setStatus("In Corso"); // Simuliamo che sia in corso
+
         assertDoesNotThrow(() -> {
             // Motivazione presente, penale = false
-            eventMgr.AnnulledEvent("Eccezione per maltempo grave", false);
+            eventMgr.cancelEvent("Eccezione per maltempo grave", false);
         });
-        
+
         assertAll("Verifica Scenario Deroga",
-            () -> assertEquals("Annullato", eventoDeroga.getStatus()),
-            () -> assertFalse(eventoDeroga.hasPenalty(), "La penale non deve scattare se c'è la deroga"),
-            () -> assertEquals("Eccezione per maltempo grave", eventoDeroga.getWaiverReason())
-        );
+                () -> assertEquals("Annullato", eventoDeroga.getStatus()),
+                () -> assertFalse(eventoDeroga.hasPenalty(), "La penale non deve scattare se c'è la deroga"),
+                () -> assertEquals("Eccezione per maltempo grave", eventoDeroga.getWaiverReason()));
     }
 
     @Test
@@ -479,15 +490,184 @@ class GestireEventiTest {
         // 2. ELIMINAZIONE BLOCCATA (Evento InCorso)
         eventMgr.createEventCard("Evento Intoccabile");
         Event eventoIntoccabile = eventMgr.getSelectedEvent();
-        
+
         // Forziamo lo stato per simulare che l'evento sia andato avanti
-        eventoIntoccabile.setStatus("InCorso"); 
+        eventoIntoccabile.setStatus("In Corso");
 
         UseCaseLogicException ex = assertThrows(UseCaseLogicException.class, () -> {
             eventMgr.deleteCurrentEvent();
         });
-        assertTrue(ex.getMessage().contains("solo in fase Preliminare"), 
-            "Il sistema DEVE lanciare un'eccezione se si prova a eliminare un evento non preliminare");
+        assertTrue(ex.getMessage().contains("solo in fase Preliminare"),
+                "Il sistema DEVE lanciare un'eccezione se si prova a eliminare un evento non preliminare");
+    }
+
+    // --- TERMINAZIONE EVENTO ---
+    @Test
+    @DisplayName("Terminazione Evento: Permessa solo in stato Confermato/In Corso, con note storiche e documentazione")
+    void test_TerminazioneEvento() throws Exception {
+
+        // =========================================================
+        // PARTE 1: TEST FALLIMENTO (Utente non Organizzatore)
+        // =========================================================
+        CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
+        eventMgr.createEventCard("Evento da Terminare");
+        Event e = eventMgr.getSelectedEvent();
+        e.setStatus("Confermato"); // Forziamo lo stato a Confermato
+
+        CatERing.getInstance().getUserManager().fakeLogin("Luca"); // Cuoco
+        UseCaseLogicException exUser = assertThrows(UseCaseLogicException.class, () -> {
+            eventMgr.terminateEvent("Note storiche", "Documentazione finale");
+        });
+        assertTrue(exUser.getMessage().contains("Organizzatore"),
+                "Deve impedire a un non-organizzatore di terminare l'evento");
+
+        // =========================================================
+        // PARTE 2: TEST FALLIMENTO (Stato Preliminare)
+        // =========================================================
+        CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
+        eventMgr.createEventCard("Evento Preliminare Non Terminabile");
+        // L'evento è in stato "Preliminare" di default
+
+        UseCaseLogicException exStato = assertThrows(UseCaseLogicException.class, () -> {
+            eventMgr.terminateEvent("Note finali", "Report evento");
+        });
+        assertTrue(exStato.getMessage().contains("Confermato o In Corso"),
+                "Deve impedire la terminazione di un evento in stato Preliminare");
+
+        // =========================================================
+        // PARTE 3: TEST SUCCESSO (Evento Confermato con documentazione)
+        // =========================================================
+        eventMgr.createEventCard("Congresso Terminato con Successo");
+        Event eventoConfermato = eventMgr.getSelectedEvent();
+        Service serv = eventMgr.defineService("12:00 - 15:00", "Pranzo");
+        // Popoliamo i campi mappati nel DB per assicurarci che appaia correttamente
+        serv.setName("Pranzo");
+        serv.setTimeStart(java.sql.Time.valueOf("12:00:00"));
+        serv.setTimeEnd(java.sql.Time.valueOf("15:00:00"));
+        serv.updateService(); // Aggiorniamo il DB
+
+        eventoConfermato.setStatus("Confermato");
+        eventoConfermato.updateEvent(); // Aggiorniamo anche l'evento nel DB per coerenza
+
+        assertDoesNotThrow(() -> {
+            eventMgr.terminateEvent(
+                    "L'evento si è svolto regolarmente con 150 partecipanti. Feedback positivo.",
+                    "Report finale con foto e valutazioni");
+        });
+
+        assertAll("Verifica post-condizioni terminateEvent con documentazione",
+                () -> assertEquals("Chiuso", eventoConfermato.getStatus(),
+                        "Lo stato deve cambiare in Chiuso"),
+                () -> assertEquals("L'evento si è svolto regolarmente con 150 partecipanti. Feedback positivo.",
+                        eventoConfermato.getNotes(),
+                        "Le note devono essere sostituite dalle note storiche"),
+                () -> assertNotNull(eventoConfermato.getDocumentations(),
+                        "La lista documentazioni non deve essere null"),
+                () -> assertEquals(1, eventoConfermato.getDocumentations().size(),
+                        "Deve essere allegata una documentazione"),
+                () -> assertEquals("Report finale con foto e valutazioni",
+                        eventoConfermato.getDocumentations().get(0).getInformation(),
+                        "Il contenuto della documentazione deve corrispondere"));
+
+        // =========================================================
+        // PARTE 4: TEST SUCCESSO (Evento InProgress senza documentazione)
+        // =========================================================
+        eventMgr.createEventCard("Evento InProgress da Chiudere");
+        Event eventoInProgress = eventMgr.getSelectedEvent();
+        eventoInProgress.setStatus("In Corso");
+
+        assertDoesNotThrow(() -> {
+            eventMgr.terminateEvent("Chiusura anticipata per completamento lavori.", null);
+        });
+
+        assertAll("Verifica post-condizioni terminateEvent senza documentazione",
+                () -> assertEquals("Chiuso", eventoInProgress.getStatus()),
+                () -> assertEquals("Chiusura anticipata per completamento lavori.",
+                        eventoInProgress.getNotes()),
+                () -> assertTrue(eventoInProgress.getDocumentations().isEmpty(),
+                        "Non deve esserci alcuna documentazione allegata se non fornita"));
+    }
+
+    // --- MODIFICA RICORRENZA ---
+    @Test
+    @DisplayName("Modifica Ricorrenza: riutilizza istanze preliminari, crea nuove se necessario, rimuove le eccedenti")
+    void test_ModificaRicorrenza() throws Exception {
+        CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
+
+        // Data di inizio fissa: 1 Maggio 2026
+        java.util.Calendar calStart = java.util.Calendar.getInstance();
+        calStart.set(2026, java.util.Calendar.MAY, 1);
+        Date startDate = new Date(calStart.getTimeInMillis());
+
+        // Data di fine fissa: 3 Maggio 2026
+        java.util.Calendar calEnd = java.util.Calendar.getInstance();
+        calEnd.set(2026, java.util.Calendar.MAY, 3);
+        Date endDate = new Date(calEnd.getTimeInMillis());
+
+        // Conclusione: 31 Maggio 2026
+        java.util.Calendar calConc = java.util.Calendar.getInstance();
+        calConc.set(2026, java.util.Calendar.MAY, 31);
+        Date conclusionDate = new Date(calConc.getTimeInMillis());
+
+        // 1. Creiamo un evento ricorrente settimanale (dal 1 Mag al 31 Mag = circa 4
+        // occorrenze)
+        eventMgr.createEventCard("Corso di Formazione");
+        eventMgr.insertData(
+                "Azienda Cliente SpA",
+                startDate, endDate, "Aule", 20, "Note", true, "Settimanale", conclusionDate);
+
+        Event capofila = eventMgr.getSelectedEvent();
+        Recurrence r = capofila.getRecurrenceObj();
+
+        assertNotNull(r, "L'evento capofila deve avere una ricorrenza");
+        assertEquals(4, r.getGeneratedEvents().size(), "Settimanale per 1 mese = 4 occorrenze generate");
+
+        // Fissiamo lo stato di un'istanza (es. la prima) a "Confermato"
+        // In questo modo verifichiamo che il sistema NON la tocchi
+        Event primaIstanza = r.getGeneratedEvents().get(0);
+        primaIstanza.setStatus("Confermato");
+        Date vecchieDateInizio = primaIstanza.getDateStart();
+
+        // 2. Modifichiamo la ricorrenza: la portiamo a "Giornaliera" ma fino al 10
+        // Maggio
+        // Nuova conclusione: 10 Maggio 2026
+        java.util.Calendar calNuovaConc = java.util.Calendar.getInstance();
+        calNuovaConc.set(2026, java.util.Calendar.MAY, 10);
+        Date nuovaConclusion = new Date(calNuovaConc.getTimeInMillis());
+
+        assertDoesNotThrow(() -> {
+            eventMgr.modifyRecurrence("Giornaliera", nuovaConclusion);
+        });
+
+        // Verifiche
+        assertEquals("Giornaliera", r.getFrequency());
+
+        // Da 1 Mag al 10 Mag giornaliero = 9 occorrenze (dal 2 al 10 compresi)
+        assertEquals(9, r.getGeneratedEvents().size(), "Deve aver creato/modificato in totale 9 occorrenze figlie");
+
+        // La prima istanza (che era "Confermato") deve essere rimasta intatta e non
+        // aver cambiato le sue date
+        assertEquals("Confermato", r.getGeneratedEvents().get(0).getStatus());
+        assertEquals(vecchieDateInizio.toString(), r.getGeneratedEvents().get(0).getDateStart().toString(),
+                "Le date dell'istanza Confermata non devono essere state alterate");
+
+        // L'ultima istanza generata deve cadere il 10 Maggio (limite)
+        java.util.Calendar checkUltima = java.util.Calendar.getInstance();
+        checkUltima.setTime(r.getGeneratedEvents().get(8).getDateStart());
+        assertEquals(10, checkUltima.get(java.util.Calendar.DAY_OF_MONTH));
+        assertEquals(java.util.Calendar.MAY, checkUltima.get(java.util.Calendar.MONTH));
+
+        // 3. Riduciamo drasticamente la ricorrenza: "Mensile" fino al 31 Maggio.
+        // Essendo dal 1 Maggio, la prima ricorrenza cadrà l'1 Giugno (che è oltre la
+        // conclusione!)
+        // Quindi dovrà eliminare TUTTE le istanze preliminari e lasciare solo quella
+        // confermata
+        assertDoesNotThrow(() -> {
+            eventMgr.modifyRecurrence("Mensile", conclusionDate); // conclusionDate è 31 Maggio
+        });
+
+        assertEquals(1, r.getGeneratedEvents().size(), "Deve essere rimasta SOLO l'istanza Confermata");
+        assertEquals("Confermato", r.getGeneratedEvents().get(0).getStatus());
     }
 
 }

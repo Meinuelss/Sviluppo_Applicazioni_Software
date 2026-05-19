@@ -30,4 +30,8 @@ public interface EventReceiver {
     void updateMenuMissing(Service service);
     void updateStaffAssigned(Service service, StaffAssignment ap);
     void updateEventConfirmed(Event e);
+
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    //Metodo per terminateEvent
+    void updateEventClosed(Event e);
 }
