@@ -110,29 +110,6 @@ public class EventManager {
     }
 
     /**
-     * Modifies an existing event
-     * 
-     * @param eventId ID of the event to modify
-     * @param name    New name for the event
-     * @param date    New date for the event
-     */
-    public void modifyEvent(int eventId, String name, Date date) {
-        Event event = Event.loadById(eventId);
-        if (event != null) {
-            event.setName(name);
-            event.setDateStart(date);
-
-            // Notify all receivers
-            notifyEventModified(event);
-
-            // Update selected event if it's the same one
-            if (selectedEvent != null && selectedEvent.getId() == eventId) {
-                this.selectedEvent = event;
-            }
-        }
-    }
-
-    /**
      * Modifies a service
      * 
      * @param serviceId ID of the service to modify

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="catering.businesslogic.menu.MenuTest" time="0.032" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="catering.businesslogic.menu.MenuTest" time="0.025" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -13,7 +13,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IT"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/23.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire/surefirebooter-20260519162003236_3.jar /Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire 2026-05-19T16-20-03_129-jvmRun1 surefire-20260519162003236_1tmp surefire_0-20260519162003236_2tmp"/>
+    <property name="sun.java.command" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire/surefirebooter-20260519170903082_3.jar /Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire 2026-05-19T17-09-02_971-jvmRun1 surefire-20260519170903082_1tmp surefire_0-20260519170903082_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/test-classes:/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/classes:/Users/manu/.m2/repository/org/xerial/sqlite-jdbc/3.49.1.0/sqlite-jdbc-3.49.1.0.jar:/Users/manu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.12.2/junit-jupiter-api-5.12.2.jar:/Users/manu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/manu/.m2/repository/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.jar:/Users/manu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/manu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.12.2/junit-jupiter-engine-5.12.2.jar:/Users/manu/.m2/repository/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.jar:"/>
@@ -30,7 +30,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire/surefirebooter-20260519162003236_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire/surefirebooter-20260519170903082_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="23.0.2"/>
@@ -59,14 +59,14 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testAddItem_NullSection_GoesToFreeItems" classname="catering.businesslogic.menu.MenuTest" time="0.001"/>
-  <testcase name="testIsOwner_SameUser_ReturnsTrue" classname="catering.businesslogic.menu.MenuTest" time="0.003"/>
-  <testcase name="testAddSection_AppendsSection" classname="catering.businesslogic.menu.MenuTest" time="0.001"/>
-  <testcase name="testIsOwner_DifferentUser_ReturnsFalse" classname="catering.businesslogic.menu.MenuTest" time="0.002"/>
+  <testcase name="testAddItem_NullSection_GoesToFreeItems" classname="catering.businesslogic.menu.MenuTest" time="0.003"/>
+  <testcase name="testIsOwner_SameUser_ReturnsTrue" classname="catering.businesslogic.menu.MenuTest" time="0.001"/>
+  <testcase name="testAddSection_AppendsSection" classname="catering.businesslogic.menu.MenuTest" time="0.004"/>
+  <testcase name="testIsOwner_DifferentUser_ReturnsFalse" classname="catering.businesslogic.menu.MenuTest" time="0.001"/>
   <testcase name="testAddItem_WithSection_GoesIntoSection" classname="catering.businesslogic.menu.MenuTest" time="0.002"/>
   <testcase name="testIsInUse_FreshMenu_ReturnsFalse" classname="catering.businesslogic.menu.MenuTest" time="0.001"/>
   <testcase name="testHasSection_NotInMenu_ReturnsFalse" classname="catering.businesslogic.menu.MenuTest" time="0.001"/>
   <testcase name="testGetSectionCount_EmptyMenu_ReturnsZero" classname="catering.businesslogic.menu.MenuTest" time="0.001"/>
   <testcase name="testAddItem_NullDescription_StoredAsNull" classname="catering.businesslogic.menu.MenuTest" time="0.001"/>
-  <testcase name="testDeepCopy_ProducesFreshMenuItemInstances" classname="catering.businesslogic.menu.MenuTest" time="0.0"/>
+  <testcase name="testDeepCopy_ProducesFreshMenuItemInstances" classname="catering.businesslogic.menu.MenuTest" time="0.001"/>
 </testsuite>
