@@ -670,4 +670,81 @@ class GestireEventiTest {
         assertEquals("Confermato", r.getGeneratedEvents().get(0).getStatus());
     }
 
+    // --- PROPAGAZIONE RICORRENZA ---
+    @Test
+    @DisplayName("Propagazione Modifiche Ricorrenza (modifyEventData, cancelEvent, deleteCurrentEvent)")
+    void test9_PropagazioneRicorrenza() throws Exception {
+        CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
+
+        // 1. Setup Ricorrenza base (Settimanale, 4 occorrenze)
+        java.util.Calendar calStart = java.util.Calendar.getInstance();
+        calStart.set(2026, java.util.Calendar.JUNE, 1);
+        Date startDate = new Date(calStart.getTimeInMillis());
+
+        java.util.Calendar calEnd = java.util.Calendar.getInstance();
+        calEnd.set(2026, java.util.Calendar.JUNE, 1);
+        Date endDate = new Date(calEnd.getTimeInMillis());
+
+        java.util.Calendar calConc = java.util.Calendar.getInstance();
+        calConc.set(2026, java.util.Calendar.JUNE, 30);
+        Date conclusionDate = new Date(calConc.getTimeInMillis());
+
+        eventMgr.createEventCard("Corsi Estivi");
+        eventMgr.insertData("Scuola ABC", startDate, endDate, "Aula 1", 30, "Portare quaderni", true, "Settimanale",
+                conclusionDate);
+
+        Event capofila = eventMgr.getSelectedEvent();
+        Recurrence r = capofila.getRecurrenceObj();
+        assertNotNull(r);
+        assertEquals(4, r.getGeneratedEvents().size(), "Deve avere 4 occorrenze preliminari");
+
+        // Fissiamo un'istanza come NON preliminare (In Corso) per verificare che non
+        // venga toccata
+        Event istanzaInCorso = r.getGeneratedEvents().get(1);
+        istanzaInCorso.setStatus("In Corso");
+        String vecchiaLocation = istanzaInCorso.getLocation(); // Aula 1
+
+        // TEST PROPAGATE MODIFY
+        eventMgr.modifyEventData("Scuola XYZ", startDate, endDate, "Aula 2 (Nuova)", 40, "Niente quaderni", true);
+
+        // Verifiche Modify Propagato
+        assertEquals("Aula 2 (Nuova)", r.getGeneratedEvents().get(0).getLocation(),
+                "La prima istanza Preliminare deve aggiornarsi");
+        assertEquals(vecchiaLocation, istanzaInCorso.getLocation(), "L'istanza In Corso NON deve aggiornarsi");
+        assertEquals("Aula 2 (Nuova)", r.getGeneratedEvents().get(2).getLocation(),
+                "Anche le altre istanze Preliminari devono aggiornarsi");
+
+        // Selezioniamo la prima istanza preliminare (figlia) per fare CANCEL e DELETE
+        // propagate
+        Event primaIstanza = r.getGeneratedEvents().get(0);
+        eventMgr.setSelectedEvent(primaIstanza);
+
+        // TEST PROPAGATE CANCEL
+        eventMgr.cancelEvent(null, false, true);
+
+        // Verifiche Cancel Propagato
+        assertEquals("Annullato", primaIstanza.getStatus(), "La prima istanza deve essere annullata");
+        assertEquals("In Corso", istanzaInCorso.getStatus(), "L'istanza In Corso NON deve essere annullata");
+        assertEquals("Annullato", r.getGeneratedEvents().get(2).getStatus(),
+                "Le altre istanze Preliminari devono essere annullate");
+
+        // Adesso le rimettiamo a Preliminare per testare DELETE (o usiamo un altro
+        // evento)
+        r.getGeneratedEvents().get(2).setStatus("Preliminare");
+        eventMgr.setSelectedEvent(r.getGeneratedEvents().get(2));
+
+        // TEST PROPAGATE DELETE
+        eventMgr.deleteCurrentEvent(true);
+
+        // Verifiche Delete Propagato
+        // Controlliamo che tra le istanze rimanenti in memoria non ce ne siano di
+        // "Preliminari".
+        for (Event ei : r.getGeneratedEvents()) {
+            if (ei.getId() != r.getGeneratedEvents().get(2).getId()) { // Ignoriamo la verifica in memoria dell'istanza
+                                                                       // corrente
+                assertFalse("Preliminare".equals(ei.getStatus()), "Non devono rimanere istanze preliminari propagate");
+            }
+        }
+    }
+
 }

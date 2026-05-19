@@ -191,6 +191,10 @@ public class EventManager {
      * Permesso SOLO se l'evento è in stato "Preliminare".
      */
     public void deleteCurrentEvent() throws UseCaseLogicException {
+        deleteCurrentEvent(false);
+    }
+
+    public void deleteCurrentEvent(boolean propagate) throws UseCaseLogicException {
         // 1. Controllo permessi utente
         User user = CatERing.getInstance().getUserManager().getCurrentUser();
         if (user == null || !user.isOrganizer()) {
@@ -215,6 +219,20 @@ public class EventManager {
         // 4. Svuota lo stato del manager (l'evento sta per essere distrutto)
         this.selectedEvent = null;
         this.currentService = null;
+
+        // Propagazione dell'eliminazione alle altre istanze preliminari della
+        // ricorrenza
+        if (propagate && eventToDelete.getRecurrenceObj() != null) {
+            java.util.ArrayList<Event> generated = eventToDelete.getRecurrenceObj().getGeneratedEvents();
+            // Iteriamo a ritroso per poter rimuovere elementi in sicurezza
+            for (int i = generated.size() - 1; i >= 0; i--) {
+                Event ei = generated.get(i);
+                if ("Preliminare".equals(ei.getStatus()) && ei.getId() != eventToDelete.getId()) {
+                    generated.remove(i);
+                    notifyEventDeleted(ei);
+                }
+            }
+        }
 
         // 5. Notifica i receiver per procedere con l'eliminazione nel DB
         // (Questo andrà a chiamare in automatico EventPersistence ->
@@ -665,6 +683,12 @@ public class EventManager {
     // metodo per modificare i dati dell'evento, con i controlli richiesti
     public void modifyEventData(String clientData, Date startDate, Date endDate, String location, int pax, String notes)
             throws UseCaseLogicException {
+        modifyEventData(clientData, startDate, endDate, location, pax, notes, false);
+    }
+
+    public void modifyEventData(String clientData, Date startDate, Date endDate, String location, int pax, String notes,
+            boolean propagate)
+            throws UseCaseLogicException {
         User user = CatERing.getInstance().getUserManager().getCurrentUser();
 
         if (user == null || !user.isOrganizer()) {
@@ -701,9 +725,29 @@ public class EventManager {
         // Notifichiamo il database del cambiamento (ora salverà anche la penale a 1 se
         // è scattata)
         notifyEventModified(this.selectedEvent);
+
+        // Propagazione della modifica alle altre istanze preliminari della ricorrenza
+        // (ignorando le date)
+        if (propagate && this.selectedEvent.getRecurrenceObj() != null) {
+            for (Event ei : this.selectedEvent.getRecurrenceObj().getGeneratedEvents()) {
+                if ("Preliminare".equals(ei.getStatus()) && ei.getId() != this.selectedEvent.getId()) {
+                    ei.setClientData(clientData);
+                    ei.setLocation(location);
+                    ei.setNumParticipants(pax);
+                    if (notes != null) {
+                        ei.setNotes(notes);
+                    }
+                    notifyEventModified(ei);
+                }
+            }
+        }
     }
 
     public void cancelEvent(String motivazioneDeroga, boolean penale) throws UseCaseLogicException {
+        cancelEvent(motivazioneDeroga, penale, false);
+    }
+
+    public void cancelEvent(String motivazioneDeroga, boolean penale, boolean propagate) throws UseCaseLogicException {
         User user = CatERing.getInstance().getUserManager().getCurrentUser();
 
         if (user == null || !user.isOrganizer()) {
@@ -745,6 +789,26 @@ public class EventManager {
 
         // Notifica il DB dell'aggiornamento
         notifyEventModified(this.selectedEvent);
+
+        // Propagazione dell'annullamento alle altre istanze preliminari della
+        // ricorrenza
+        if (propagate && this.selectedEvent.getRecurrenceObj() != null) {
+            for (Event ei : this.selectedEvent.getRecurrenceObj().getGeneratedEvents()) {
+                if ("Preliminare".equals(ei.getStatus()) && ei.getId() != this.selectedEvent.getId()) {
+                    ei.setStatus("Annullato");
+                    ei.setPenalty(false);
+                    ei.setWaiverReason(null);
+                    if (ei.getServices() != null) {
+                        for (Service s : ei.getServices()) {
+                            if (s.getAssignments() != null) {
+                                s.getAssignments().clear();
+                            }
+                        }
+                    }
+                    notifyEventModified(ei);
+                }
+            }
+        }
     }
 
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
