@@ -81,4 +81,9 @@ public class EventPersistence implements EventReceiver {
     public void updateEventClosed(Event e) {
         e.updateEvent(); // Salva lo stato "Chiuso" e le note storiche nel DB
     }
+
+    @Override
+    public void updateEventCancelled(Event event) {
+        event.updateEvent(); // Salva lo stato "Cancellato" nel DB
+    }
 }

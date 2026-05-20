@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import catering.businesslogic.user.User;
 import catering.persistence.PersistenceManager;
 import catering.persistence.ResultHandler;
@@ -100,11 +99,20 @@ public class Event {
     }
 
     public void setChef(User chef) {
+        if (chef != null && !chef.isChef()) {
+            throw new IllegalArgumentException("L'utente assegnato non ha il ruolo di Chef");
+        }
         this.chef = chef;
+        this.chef_id = chef != null ? chef.getId() : 0;
     }
 
     public void setChefId(int chefId) {
-        this.chef = User.load(chefId);
+        User user = User.load(chefId);
+        if (user != null && !user.isChef()) {
+            throw new IllegalArgumentException("L'utente assegnato non ha il ruolo di Chef");
+        }
+        this.chef = user;
+        this.chef_id = chefId;
     }
 
     public void setTypeEvent(boolean typeEvent) {
@@ -399,7 +407,12 @@ public class Event {
     }
 
     public void setChef_id(int chef_id) {
+        User user = User.load(chef_id);
+        if (user != null && !user.isChef()) {
+            throw new IllegalArgumentException("L'utente assegnato non ha il ruolo di Chef");
+        }
         this.chef_id = chef_id;
+        this.chef = user;
     }
 
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

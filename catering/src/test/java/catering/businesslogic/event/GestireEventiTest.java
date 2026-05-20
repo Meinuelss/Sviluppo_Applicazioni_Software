@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 
 import catering.businesslogic.CatERing;
 import catering.businesslogic.UseCaseLogicException;
+import catering.businesslogic.user.User;
 import catering.persistence.PersistenceManager;
 
 class GestireEventiTest {
@@ -181,10 +182,8 @@ class GestireEventiTest {
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
 
         // Definiamo un servizio e colleghiamogli il menu
-        Service servizio = eventMgr.defineService("20:00 - 23:00", "Cena Elegante");
+        Service servizio = eventMgr.defineService(java.sql.Time.valueOf("20:00:00"), java.sql.Time.valueOf("23:00:00"), "Cena Elegante");
         servizio.setName("Cena Elegante");
-        servizio.setTimeStart(java.sql.Time.valueOf("20:00:00"));
-        servizio.setTimeEnd(java.sql.Time.valueOf("23:00:00"));
         servizio.updateService();
         servizio.setMenu(menu);
 
@@ -226,10 +225,8 @@ class GestireEventiTest {
         // =========================================================
         CatERing.getInstance().getUserManager().fakeLogin("Giovanni"); // Login come organizzatore
         eventMgr.createEventCard("Buffet Estivo");
-        Service servizio = assertDoesNotThrow(() -> eventMgr.defineService("19:00 - 22:00", "Apericena"));
+        Service servizio = assertDoesNotThrow(() -> eventMgr.defineService(java.sql.Time.valueOf("19:00:00"), java.sql.Time.valueOf("22:00:00"), "Apericena"));
         servizio.setName("Apericena");
-        servizio.setTimeStart(java.sql.Time.valueOf("19:00:00"));
-        servizio.setTimeEnd(java.sql.Time.valueOf("22:00:00"));
         servizio.updateService();
 
         StaffMember cameriere = new StaffMember("Marco");
@@ -311,10 +308,8 @@ class GestireEventiTest {
         assertTrue(exServizi.getMessage().contains("servizi"));
 
         // Aggiungiamo un servizio per superare il blocco
-        Service serv = eventMgr.defineService("12:00 - 15:00", "Pranzo");
+        Service serv = eventMgr.defineService(java.sql.Time.valueOf("12:00:00"), java.sql.Time.valueOf("15:00:00"), "Pranzo");
         serv.setName("Pranzo");
-        serv.setTimeStart(java.sql.Time.valueOf("12:00:00"));
-        serv.setTimeEnd(java.sql.Time.valueOf("15:00:00"));
         serv.updateService();
 
         // =========================================================
@@ -323,8 +318,9 @@ class GestireEventiTest {
         UseCaseLogicException exChef = assertThrows(UseCaseLogicException.class, () -> eventMgr.confirmEvent());
         assertTrue(exChef.getMessage().contains("chef"));
 
-        // Assegniamo uno chef (ID 7 è lo Chef Giovanni nel DB) per superare il blocco
-        e.setChefId(7);
+        // Assegniamo uno chef (ID 6 è lo Chef Chiara nel DB) tramite il manager
+        User chiara = User.load(6);
+        assertDoesNotThrow(() -> eventMgr.assignChef(chiara));
 
         // =========================================================
         // PARTE 5: TEST SUCCESSO (Tutti i requisiti soddisfatti)
@@ -389,7 +385,7 @@ class GestireEventiTest {
         // =========================================================
         // Aumento del 20% (da 100 a 120 pax)
         assertDoesNotThrow(() -> {
-            eventMgr.modifyEventData("Azienda Spa", dataInizio, dataFine, "Sala Centrale", 120, "");
+            eventMgr.modifyEventData("Azienda Spa", dataInizio, dataFine, "Sala Centrale", 120, "", "", false);
         });
         assertEquals(120, eventoSelezionato.getNumParticipants());
         assertFalse(eventoSelezionato.hasPenalty(), "La penale NON deve scattare per variazioni <= 30%");
@@ -399,7 +395,7 @@ class GestireEventiTest {
         // =========================================================
         // Aumento drastico (da 120 a 180 pax)
         assertDoesNotThrow(() -> {
-            eventMgr.modifyEventData("Azienda Spa", dataInizio, dataFine, "Sala Centrale", 180, "");
+            eventMgr.modifyEventData("Azienda Spa", dataInizio, dataFine, "Sala Centrale", 180, "", "", true);
         });
         assertEquals(180, eventoSelezionato.getNumParticipants(), "I dati devono essere modificati con successo");
         assertTrue(eventoSelezionato.hasPenalty(), "La penale DEVE scattare automaticamente per variazioni > 30%");
@@ -412,7 +408,7 @@ class GestireEventiTest {
 
         UseCaseLogicException exInCorso = assertThrows(UseCaseLogicException.class, () -> {
             // Cerchiamo di fare una modifica
-            eventMgr.modifyEventData("Azienda Spa", dataInizio, dataFine, "Sala Centrale", 120, "");
+            eventMgr.modifyEventData("Azienda Spa", dataInizio, dataFine, "Sala Centrale", 120, "", "", false);
         });
         assertTrue(exInCorso.getMessage().contains("Impossibile modificare"),
                 "Deve impedire qualsiasi modifica se l'evento è in corso");
@@ -547,11 +543,9 @@ class GestireEventiTest {
         // =========================================================
         eventMgr.createEventCard("Congresso Terminato con Successo");
         Event eventoConfermato = eventMgr.getSelectedEvent();
-        Service serv = eventMgr.defineService("12:00 - 15:00", "Pranzo");
+        Service serv = eventMgr.defineService(java.sql.Time.valueOf("12:00:00"), java.sql.Time.valueOf("15:00:00"), "Pranzo");
         // Popoliamo i campi mappati nel DB per assicurarci che appaia correttamente
         serv.setName("Pranzo");
-        serv.setTimeStart(java.sql.Time.valueOf("12:00:00"));
-        serv.setTimeEnd(java.sql.Time.valueOf("15:00:00"));
         serv.updateService(); // Aggiorniamo il DB
 
         eventoConfermato.setStatus("Confermato");
@@ -713,7 +707,7 @@ class GestireEventiTest {
         String vecchiaLocation = istanzaInCorso.getLocation(); // Aula 1
 
         // TEST PROPAGATE MODIFY
-        eventMgr.modifyEventData("Scuola XYZ", startDate, endDate, "Aula 2 (Nuova)", 40, "Niente quaderni", true);
+        eventMgr.modifyEventData("Scuola XYZ", startDate, endDate, "Aula 2 (Nuova)", 40, "Niente quaderni", true, "", false);
 
         // Verifiche Modify Propagato
         assertEquals("Aula 2 (Nuova)", r.getGeneratedEvents().get(0).getLocation(),

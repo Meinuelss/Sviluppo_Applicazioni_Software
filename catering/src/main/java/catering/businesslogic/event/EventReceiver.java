@@ -14,6 +14,8 @@ public interface EventReceiver {
 
     void updateEventDeleted(Event event);
 
+    void updateEventCancelled(Event event);
+
     void updateServiceCreated(Event event, Service service);
 
     void updateServiceModified(Service service);

@@ -1,6 +1,7 @@
 package catering.businesslogic.event;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 
 import catering.businesslogic.CatERing;
@@ -318,6 +319,18 @@ public class EventManager {
         }
     }
 
+    private void notifyEventConfirmed(Event event) {
+        for (EventReceiver receiver : eventReceivers) {
+            receiver.updateEventConfirmed(event);
+        }
+    }
+
+    private void notifyEventCancelled(Event event) {
+        for (EventReceiver receiver : eventReceivers) {
+            receiver.updateEventCancelled(event);
+        }
+    }
+
     private void notifyServiceCreated(Service service) {
         for (EventReceiver receiver : eventReceivers) {
             receiver.updateServiceCreated(selectedEvent, service);
@@ -523,13 +536,14 @@ public class EventManager {
         }
     }
 
-    public Service defineService(String timeSlot, String type) throws UseCaseLogicException {
+    public Service defineService(Time timeStart, Time timeEnd, String type) throws UseCaseLogicException {
         if (this.selectedEvent == null) {
             throw new UseCaseLogicException("Nessun evento in gestione.");
         }
 
         Service service = new Service();
-        service.setTimeSlot(timeSlot);
+        service.setTimeStart(timeStart);;
+        service.setTimeEnd(timeEnd);
         service.setType(type);
         service.setEventId(this.selectedEvent.getId());
 
@@ -634,10 +648,25 @@ public class EventManager {
         // Cambia lo stato in Confermato
         this.selectedEvent.setStatus("Confermato");
 
-        // Salva tutto su eventReceiver
-        for (EventReceiver er : eventReceivers) {
-            er.updateEventConfirmed(this.selectedEvent);
+        notifyEventConfirmed(this.selectedEvent);
+    }
+
+    public void assignChef(User chef) throws UseCaseLogicException {
+        User user = CatERing.getInstance().getUserManager().getCurrentUser();
+        if (user == null || !user.isOrganizer()) {
+            throw new UseCaseLogicException("Utente non autorizzato: devi essere un Organizzatore.");
         }
+
+        if (this.selectedEvent == null) {
+            throw new UseCaseLogicException("Nessun evento in gestione.");
+        }
+
+        if (chef == null || !chef.isChef()) {
+            throw new UseCaseLogicException("L'utente specificato non ha il ruolo di Chef.");
+        }
+
+        this.selectedEvent.setChef(chef);
+        notifyEventModified(this.selectedEvent);
     }
 
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -673,21 +702,21 @@ public class EventManager {
             this.selectedEvent.setWaiverReason(motivazioneDeroga);
             this.selectedEvent.setPenalty(false);
         } else {
-            this.selectedEvent.setPenalty(penale);
             this.selectedEvent.setWaiverReason(null);
+            this.selectedEvent.setPenalty(penale);
         }
 
         notifyEventModified(this.selectedEvent);
     }
 
     // metodo per modificare i dati dell'evento, con i controlli richiesti
-    public void modifyEventData(String clientData, Date startDate, Date endDate, String location, int pax, String notes)
+    public void modifyEventData(String clientData, Date startDate, Date endDate, String location, int pax, String notes, String deroga, boolean penale)
             throws UseCaseLogicException {
-        modifyEventData(clientData, startDate, endDate, location, pax, notes, false);
+        modifyEventData(clientData, startDate, endDate, location, pax, notes, false, deroga, penale);
     }
 
     public void modifyEventData(String clientData, Date startDate, Date endDate, String location, int pax, String notes,
-            boolean propagate)
+            boolean propagate, String deroga, boolean penale)
             throws UseCaseLogicException {
         User user = CatERing.getInstance().getUserManager().getCurrentUser();
 
@@ -706,9 +735,7 @@ public class EventManager {
 
         // 2. Controllo Eccezione 2d.1a: Variazione partecipanti oltre il 30%
         if (!this.selectedEvent.canModifyParticipants(pax)) {
-            // INVECE DI BLOCCARE: APPLICHIAMO LA PENALE IN AUTOMATICO!
-            this.selectedEvent.setPenalty(true);
-            this.selectedEvent.setWaiverReason(null); // Resettiamo eventuali deroghe precedenti
+            this.inserisciDerogaPenale(deroga, penale);
         }
 
         // Applichiamo le modifiche ai dati
@@ -762,17 +789,14 @@ public class EventManager {
         // Deroga
         if ("In Corso".equals(this.selectedEvent.getStatus())) {
             if (motivazioneDeroga != null && !motivazioneDeroga.trim().isEmpty()) {
-                this.selectedEvent.setWaiverReason(motivazioneDeroga);
-                this.selectedEvent.setPenalty(false); // Niente penale se c'è deroga
+                this.inserisciDerogaPenale(motivazioneDeroga, false);
             } else {
-                this.selectedEvent.setPenalty(penale);
-                this.selectedEvent.setWaiverReason(null);
+                this.inserisciDerogaPenale(null, penale);
             }
         } else {
             // Se l'evento è Preliminare, si annulla semplicemente (nessuna penale/deroga
             // possibile)
-            this.selectedEvent.setPenalty(false);
-            this.selectedEvent.setWaiverReason(null);
+            this.inserisciDerogaPenale(null, false);
         }
 
         // Cambia lo stato in Annullato
@@ -787,8 +811,7 @@ public class EventManager {
             }
         }
 
-        // Notifica il DB dell'aggiornamento
-        notifyEventModified(this.selectedEvent);
+        notifyEventCancelled(this.selectedEvent);
 
         // Propagazione dell'annullamento alle altre istanze preliminari della
         // ricorrenza
@@ -805,7 +828,7 @@ public class EventManager {
                             }
                         }
                     }
-                    notifyEventModified(ei);
+                    notifyEventCancelled(ei);
                 }
             }
         }

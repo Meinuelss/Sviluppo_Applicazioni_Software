@@ -26,7 +26,6 @@ public class Service {
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^
     // Attributo per test3
     private java.util.ArrayList<StaffAssignment> assignments = new java.util.ArrayList<>();
-    private String timeSlot;
     private String type;
 
     public Service() {
@@ -347,10 +346,6 @@ public class Service {
         return this.assignments;
     }
 
-    public void setTimeSlot(String timeSlot) {
-        this.timeSlot = timeSlot;
-    }
-
     public void setType(String type) {
         this.type = type;
     }
@@ -365,9 +360,6 @@ public class Service {
         this.assignments = assignments;
     }
 
-    public String getTimeSlot() {
-        return timeSlot;
-    }
 
     public String getType() {
         return type;
