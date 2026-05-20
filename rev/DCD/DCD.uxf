@@ -1,10 +1,10 @@
-<diagram program="umletino" version="15.1"><zoom_level>7</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>1239</x><y>77</y><w>238</w><h>28</h></coordinates><panel_attributes>halign=center
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>1480</x><y>48</y><w>272</w><h>32</h></coordinates><panel_attributes>halign=center
 *Design Class Diagram (DCD)*
 lw=0
 fontsize=20
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1631</x><y>301</y><w>210</w><h>343</h></coordinates><panel_attributes>UserManagement
-fg=gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>931</x><y>84</y><w>693</w><h>385</h></coordinates><panel_attributes>MenuManagement</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1631</x><y>56</y><w>210</w><h>231</h></coordinates><panel_attributes>RecipeManagement
-fg=gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>994</x><y>112</y><w>245</w><h>203</h></coordinates><panel_attributes>MenuManager
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1928</x><y>304</y><w>240</w><h>392</h></coordinates><panel_attributes>UserManagement
+fg=gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1128</x><y>56</y><w>792</w><h>440</h></coordinates><panel_attributes>MenuManagement</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1928</x><y>24</y><w>240</w><h>264</h></coordinates><panel_attributes>RecipeManagement
+fg=gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1200</x><y>88</y><w>280</w><h>232</h></coordinates><panel_attributes>MenuManager
 --
 -menuFeatures: String[]
 --
@@ -23,7 +23,7 @@ fg=gray</panel_attributes><additional_attributes></additional_attributes></eleme
 +defineSection(name: String)
 +insertItem(r: Recipe, sec?: Section, desc?: String)
 +createMenu(title: String): Menu
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1316</x><y>105</y><w>259</w><h>203</h></coordinates><panel_attributes>Menu
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1568</x><y>80</y><w>296</w><h>232</h></coordinates><panel_attributes>Menu
 --
 -title: String
 -published: boolean
@@ -42,39 +42,39 @@ fg=gray</panel_attributes><additional_attributes></additional_attributes></eleme
 
 +getKitchenProcesses():ArrayList&lt;KitchenProcess&gt;
 
-fg=BLACK</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1232</x><y>210</y><w>98</w><h>35</h></coordinates><panel_attributes>lt=&lt;-
+fg=white</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1472</x><y>200</y><w>112</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
 currentMenu
-m1=0..1</panel_attributes><additional_attributes>120;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1428</x><y>392</y><w>182</w><h>70</h></coordinates><panel_attributes>MenuItem
+m1=0..1</panel_attributes><additional_attributes>120;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1696</x><y>408</y><w>208</w><h>80</h></coordinates><panel_attributes>MenuItem
 --
 description: String
 --
 +create(rec: Recipe, desc?: String)
-+create(mi: MenuItem)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1680</x><y>147</y><w>84</w><h>49</h></coordinates><panel_attributes>«interface»
++create(mi: MenuItem)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1984</x><y>128</y><w>96</w><h>56</h></coordinates><panel_attributes>«interface»
 KitchenProcess
 fg=gray
 --
--name</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1575</x><y>77</y><w>91</w><h>329</h></coordinates><panel_attributes>lt=&lt;-
-itemRecipe</panel_attributes><additional_attributes>110;10;10;10;10;450</additional_attributes></element><element><id>Relation</id><coordinates><x>1449</x><y>301</y><w>56</w><h>105</h></coordinates><panel_attributes>lt=&lt;-
+-name</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1864</x><y>48</y><w>104</w><h>376</h></coordinates><panel_attributes>lt=&lt;-
+itemRecipe</panel_attributes><additional_attributes>110;10;10;10;10;450</additional_attributes></element><element><id>Relation</id><coordinates><x>1720</x><y>304</y><w>64</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..n
-freeItems</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1274</x><y>336</y><w>147</w><h>84</h></coordinates><panel_attributes>Section
+freeItems</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1520</x><y>344</y><w>168</w><h>96</h></coordinates><panel_attributes>Section
 --
 name: String
 --
 
 +create(name: String)
 +create(sec: Section)
-+addItem(mi: MenuItem)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1246</x><y>245</y><w>84</w><h>112</h></coordinates><panel_attributes>lt=&lt;-
++addItem(mi: MenuItem)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1488</x><y>240</y><w>96</w><h>128</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..n
-sections</panel_attributes><additional_attributes>40;130;10;130;10;10;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1295</x><y>413</y><w>147</w><h>56</h></coordinates><panel_attributes>lt=&lt;-
+sections</panel_attributes><additional_attributes>40;130;10;130;10;10;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1544</x><y>432</y><w>168</w><h>64</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..n
-sectionItems</panel_attributes><additional_attributes>190;50;10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>952</x><y>497</y><w>154</w><h>49</h></coordinates><panel_attributes>UseCaseLogicException
+sectionItems</panel_attributes><additional_attributes>190;50;10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1152</x><y>528</y><w>176</w><h>56</h></coordinates><panel_attributes>UseCaseLogicException
 --
-fg=gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1176</x><y>497</y><w>91</w><h>49</h></coordinates><panel_attributes>Exception
+fg=gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1408</x><y>528</y><w>104</w><h>56</h></coordinates><panel_attributes>Exception
 --
 
 fg=magenta
-fg=gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1099</x><y>518</y><w>91</w><h>21</h></coordinates><panel_attributes>lt=&lt;&lt;-
-fg=gray</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>987</x><y>357</y><w>273</w><h>105</h></coordinates><panel_attributes>«interface»
+fg=gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1320</x><y>552</y><w>104</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;-
+fg=gray</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1192</x><y>368</y><w>312</w><h>120</h></coordinates><panel_attributes>«interface»
 MenuEventReceiver
 --
 
@@ -84,12 +84,12 @@ MenuEventReceiver
 /+updateMenuCreated(m: Menu)/
 /+updateMenuDeleted(m: Menu)/
 /+updateSectionsRearranged(m: Menu)/
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1092</x><y>308</y><w>77</w><h>63</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1312</x><y>312</y><w>88</w><h>72</h></coordinates><panel_attributes>lt=&lt;-
 eventReceivers
 
 
-m1=0..n</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>931</x><y>476</y><w>679</w><h>168</h></coordinates><panel_attributes>General module
-fg=gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1645</x><y>469</y><w>182</w><h>140</h></coordinates><panel_attributes>UserManager
+m1=0..n</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1128</x><y>504</y><w>776</w><h>192</h></coordinates><panel_attributes>General module
+fg=gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1944</x><y>496</y><w>208</w><h>160</h></coordinates><panel_attributes>UserManager
 --
 
 --
@@ -99,7 +99,7 @@ fg=gray</panel_attributes><additional_attributes></additional_attributes></eleme
 --
 *operations methods*
 +getCurrentUser(): User
-fg=gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1673</x><y>336</y><w>105</w><h>77</h></coordinates><panel_attributes>User
+fg=gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1976</x><y>344</y><w>120</w><h>88</h></coordinates><panel_attributes>User
 
 --
 
@@ -107,12 +107,12 @@ fg=gray</panel_attributes><additional_attributes></additional_attributes></eleme
 +isChef( ): boolean
 +isOrganizer(): boolean
 fg=gray
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1722</x><y>406</y><w>70</w><h>77</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2032</x><y>424</y><w>80</w><h>88</h></coordinates><panel_attributes>lt=&lt;-
 currentUser
 m1=0..1
-fg=gray</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>1519</x><y>301</y><w>168</w><h>77</h></coordinates><panel_attributes>lt=&lt;-
+fg=gray</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>1800</x><y>304</y><w>192</w><h>88</h></coordinates><panel_attributes>lt=&lt;-
                        owner
-m1=1</panel_attributes><additional_attributes>220;80;10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1638</x><y>217</y><w>133</w><h>63</h></coordinates><panel_attributes>RecipeManager
+m1=1</panel_attributes><additional_attributes>220;80;10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1936</x><y>208</y><w>152</w><h>72</h></coordinates><panel_attributes>RecipeManager
 --
 
 --
@@ -120,10 +120,10 @@ m1=1</panel_attributes><additional_attributes>220;80;10;80;10;10</additional_att
 	ArrayList&lt;Recipe&gt;
 
 fg=gray
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1757</x><y>175</y><w>84</w><h>84</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2072</x><y>160</y><w>96</w><h>96</h></coordinates><panel_attributes>lt=-&gt;
 m2=0..n
 recipes
-fg=gray</panel_attributes><additional_attributes>20;100;60;100;60;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>385</x><y>112</y><w>252</w><h>560</h></coordinates><panel_attributes>Event
+fg=gray</panel_attributes><additional_attributes>20;100;60;100;60;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>504</x><y>88</y><w>288</w><h>640</h></coordinates><panel_attributes>Event
 --
 - status: String
 - title: String
@@ -176,7 +176,7 @@ fg=gray</panel_attributes><additional_attributes>20;100;60;100;60;10;10;10</addi
 + respectsMinimumNotice(date: Date): boolean
 + markAsCancelled()
 + markAsInProgress()
-+ markAsClosed(historicalNotes: String)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>714</x><y>112</y><w>203</w><h>161</h></coordinates><panel_attributes>Service
++ markAsClosed(historicalNotes: String)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>88</y><w>232</w><h>184</h></coordinates><panel_attributes>Service
 --
 - timeSlot: String
 - type: String
@@ -191,50 +191,51 @@ fg=gray</panel_attributes><additional_attributes>20;100;60;100;60;10;10;10</addi
 + isMenuApproved(): boolean
 + addAssignment(ap: StaffAssignment)
 + getAssignments(): ArrayList&lt;StaffAssignment&gt;
-+ updateAssignmentsAfterMenuApproval()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1652</x><y>686</y><w>182</w><h>63</h></coordinates><panel_attributes>SummarySheet
++ updateAssignmentsAfterMenuApproval()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1952</x><y>744</y><w>208</w><h>72</h></coordinates><panel_attributes>SummarySheet
 --
 --
 +create( )
 +addTask(t: KitchenTask)
-fg=BLACK</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1610</x><y>819</y><w>217</w><h>63</h></coordinates><panel_attributes>KitchenTask
+fg=white
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1904</x><y>896</y><w>248</w><h>72</h></coordinates><panel_attributes>KitchenTask
 --
 --
 +create(r: KitchenProcess)
 
-fg=BLACK</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1687</x><y>742</y><w>49</w><h>91</h></coordinates><panel_attributes>lt=-&gt;
+fg=white</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1992</x><y>808</y><w>56</w><h>104</h></coordinates><panel_attributes>lt=-&gt;
 taskList
-m2=0..n</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>1757</x><y>154</y><w>133</w><h>714</h></coordinates><panel_attributes>lt=&lt;-
+m2=0..n</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>2072</x><y>136</y><w>152</w><h>816</h></coordinates><panel_attributes>lt=&lt;-
 process
-fg=BLACK</panel_attributes><additional_attributes>10;10;130;10;130;1000;100;1000</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1225</x><y>812</y><w>273</w><h>77</h></coordinates><panel_attributes>«interface»
+fg=BLACK</panel_attributes><additional_attributes>10;10;130;10;130;1000;100;1000</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1464</x><y>888</y><w>312</w><h>88</h></coordinates><panel_attributes>«interface»
 KitchenTaskEventReceiver
 --
 
 --
 /+updateSheetGenerated(sheet: SummarySheet)/
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1351</x><y>763</y><w>77</w><h>63</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1608</x><y>832</y><w>88</w><h>72</h></coordinates><panel_attributes>lt=&lt;-
 eventReceivers
-m1=0..n</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1547</x><y>707</y><w>119</w><h>35</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1832</x><y>768</y><w>136</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
 currentSummarySheet
-m1=0..1</panel_attributes><additional_attributes>150;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1652</x><y>77</y><w>84</w><h>35</h></coordinates><panel_attributes>Recipe
+m1=0..1</panel_attributes><additional_attributes>150;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1952</x><y>48</y><w>96</w><h>40</h></coordinates><panel_attributes>Recipe
 fg=gray
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1666</x><y>105</y><w>70</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;-
-fg=gray</panel_attributes><additional_attributes>80;60;80;30;10;30;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1750</x><y>77</y><w>84</w><h>35</h></coordinates><panel_attributes>Preparation
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1968</x><y>80</y><w>80</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;-
+fg=gray</panel_attributes><additional_attributes>80;60;80;30;10;30;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2064</x><y>48</y><w>96</w><h>40</h></coordinates><panel_attributes>Preparation
 fg=gray
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1715</x><y>105</y><w>91</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;-
-fg=gray</panel_attributes><additional_attributes>10;60;10;30;110;30;110;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>938</x><y>658</y><w>903</w><h>273</h></coordinates><panel_attributes>KitchenTaskManagement</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1183</x><y>693</y><w>371</w><h>77</h></coordinates><panel_attributes>KitchenTaskManager
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2024</x><y>80</y><w>104</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;-
+fg=gray</panel_attributes><additional_attributes>10;60;10;30;110;30;110;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1136</x><y>712</y><w>1032</w><h>312</h></coordinates><panel_attributes>KitchenTaskManagement</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1416</x><y>752</y><w>424</w><h>88</h></coordinates><panel_attributes>KitchenTaskManager
 --
 --
 +addEventReceiver(er: KitchenTaskEventReceiver)
 +removeEventReceiver(er: KitchenTaskEventReceiver)
 -notifySheetGenerated(sheet: SummarySheet)
 --
-+generateSummarySheet(event: Event, service: Service): SummarySheet</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>140</y><w>98</w><h>35</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
++generateSummarySheet(event: Event, service: Service): SummarySheet</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>784</x><y>120</y><w>112</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1..n
 m2=1
-services/contains</panel_attributes><additional_attributes>120;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>707</x><y>322</y><w>203</w><h>168</h></coordinates><panel_attributes>StaffAssignment
+services/contains</panel_attributes><additional_attributes>120;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>872</x><y>328</y><w>232</w><h>192</h></coordinates><panel_attributes>StaffAssignment
 --
 - role: String
 - waitingForMenu: boolean
@@ -250,15 +251,15 @@ services/contains</panel_attributes><additional_attributes>120;20;10;20</additio
 + getRole(): String
 + getMember(): StaffMember
 + isWaitingForMenu(): boolean
-+ needsReview(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>798</x><y>266</y><w>105</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
++ needsReview(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>976</x><y>264</y><w>120</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=0..n
 m2=1
-assignments/requires</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>441</x><y>763</y><w>126</w><h>56</h></coordinates><panel_attributes>Documentation
+assignments/requires</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>792</y><w>144</w><h>72</h></coordinates><panel_attributes>Documentation
 --
 - information: String
 --
 + create(information: String)
-+ getInformation(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>707</x><y>539</y><w>203</w><h>84</h></coordinates><panel_attributes>StaffMember
++ getInformation(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>872</x><y>576</y><w>232</w><h>96</h></coordinates><panel_attributes>StaffMember
 --
 - name: String
 - available: boolean
@@ -266,19 +267,19 @@ assignments/requires</panel_attributes><additional_attributes>10;80;10;10</addit
 + create(name: String)
 + getName(): String
 + isAvailable(): boolean
-+ setAvailable(value: boolean)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>784</x><y>483</y><w>91</w><h>70</h></coordinates><panel_attributes>lt=&lt;-
++ setAvailable(value: boolean)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>512</y><w>104</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
 m1=1
 m2=0..n
-member/employs</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>791</x><y>49</y><w>721</w><h>77</h></coordinates><panel_attributes>lt=&lt;-
+member/employs</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>968</x><y>16</y><w>824</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..1
 m2=0..n
-menu/provides</panel_attributes><additional_attributes>990;80;990;20;10;20;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>399</y><w>1057</w><h>266</h></coordinates><panel_attributes>lt=&lt;-
+menu/provides</panel_attributes><additional_attributes>990;80;990;20;10;20;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>784</x><y>416</y><w>1208</w><h>304</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..1
 m2=0..n
-chef/assigned to</panel_attributes><additional_attributes>1490;10;1410;10;1410;350;10;350</additional_attributes></element><element><id>Relation</id><coordinates><x>497</x><y>665</y><w>119</w><h>112</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+chef/assigned to</panel_attributes><additional_attributes>1490;10;1410;10;1410;350;10;350</additional_attributes></element><element><id>Relation</id><coordinates><x>544</x><y>720</y><w>136</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=0..1
 m2=1
-documentation/contains</panel_attributes><additional_attributes>10;140;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>28</x><y>133</y><w>287</w><h>469</h></coordinates><panel_attributes>EventManager
+documentation/contains</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>96</x><y>112</y><w>328</w><h>536</h></coordinates><panel_attributes>EventManager
 --
 - currentEvent: Event [0..1]
 - eventReceivers: EventReceiver [0..n]
@@ -322,10 +323,10 @@ documentation/contains</panel_attributes><additional_attributes>10;140;10;10</ad
                   conclusion?: Date)
 + confirmModificationWithWaiver(waiverReason?: String,
                                 penalty?: boolean)
-+ terminateEvent(historicalNotes: String, documentation: String)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>308</x><y>217</y><w>91</w><h>35</h></coordinates><panel_attributes>lt=&lt;-
++ terminateEvent(historicalNotes: String, documentation: String)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>416</x><y>208</y><w>104</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..1
 m2=0..n
-currentEvent</panel_attributes><additional_attributes>110;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>119</x><y>672</y><w>203</w><h>147</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+currentEvent</panel_attributes><additional_attributes>110;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>728</y><w>232</w><h>168</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 EventReceiver
 --
 + updateEventCreated(e: Event)
@@ -338,12 +339,12 @@ EventReceiver
 + updateEventConfirmed(e: Event)
 + updateEventCancelled(e: Event)
 + updateEventDeleted(e: Event)
-+ updateEventClosed(e: Event)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>595</y><w>77</w><h>91</h></coordinates><panel_attributes>lt=&lt;-
++ updateEventClosed(e: Event)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>304</x><y>640</y><w>88</w><h>104</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..n
 m2=0..n
-eventReceivers</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>0</x><y>77</y><w>924</w><h>861</h></coordinates><panel_attributes>Event module
-fg=black
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>693</x><y>728</y><w>196</w><h>126</h></coordinates><panel_attributes>Recurrence
+eventReceivers</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>56</x><y>48</y><w>1056</w><h>984</h></coordinates><panel_attributes>Event module
+fg=white
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>856</x><y>792</y><w>224</w><h>144</h></coordinates><panel_attributes>Recurrence
 --
 - idRecurrence: int
 - frequency: String
@@ -354,13 +355,23 @@ fg=black
 + getFrequency(): String
 + getConclusion(): Date
 + addGeneratedEvent(e: Event)
-+ getGeneratedEvents(): ArrayList&lt;Event&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>616</x><y>665</y><w>91</w><h>154</h></coordinates><panel_attributes>lt=&lt;-
++ getGeneratedEvents(): ArrayList&lt;Event&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>720</y><w>104</w><h>176</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..n
 m2=0..n
-generatedby</panel_attributes><additional_attributes>110;190;10;190;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>651</y><w>140</w><h>91</h></coordinates><panel_attributes>lt=&lt;-
+generatedby</panel_attributes><additional_attributes>110;190;10;190;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>784</x><y>704</y><w>160</w><h>104</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..n
 m2=0..n
-generates</panel_attributes><additional_attributes>160;110;160;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>168</y><w>98</w><h>35</h></coordinates><panel_attributes>lt=&lt;-
+generates</panel_attributes><additional_attributes>160;110;160;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>784</x><y>152</y><w>112</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
 m1=1
 m2=0..n
-related to</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element></diagram>
+related to</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>920</y><w>144</w><h>80</h></coordinates><panel_attributes>Modification
+--
+- content: String
+--
++ create(content: String)
++ getContent(): String
++ setContent(content: String)
++lintTo(Event: event, Menu menu)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>0</y><w>1824</w><h>992</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..n
+m2=0..n
+proposedTo</panel_attributes><additional_attributes>2240;100;2240;20;20;20;10;1210;700;1210</additional_attributes></element></diagram>
