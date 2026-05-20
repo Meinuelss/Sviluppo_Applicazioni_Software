@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="catering.businesslogic.event.GestireEventiTest" time="0.243" tests="13" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="catering.businesslogic.event.GestireEventiTest" time="1.406" tests="13" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -13,9 +13,10 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IT"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/23.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire/surefirebooter-20260519174602343_3.jar /Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire 2026-05-19T17-46-02_260-jvmRun1 surefire-20260519174602343_1tmp surefire_0-20260519174602343_2tmp"/>
+    <property name="sun.java.command" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire/surefirebooter-20260520110022422_3.jar /Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire 2026-05-20T11-00-22_309-jvmRun1 surefire-20260520110022422_1tmp surefire_0-20260520110022422_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
+    <property name="test" value="GestireEventiTest"/>
     <property name="surefire.test.class.path" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/test-classes:/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/classes:/Users/manu/.m2/repository/org/xerial/sqlite-jdbc/3.49.1.0/sqlite-jdbc-3.49.1.0.jar:/Users/manu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.12.2/junit-jupiter-api-5.12.2.jar:/Users/manu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/manu/.m2/repository/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.jar:/Users/manu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/manu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.12.2/junit-jupiter-engine-5.12.2.jar:/Users/manu/.m2/repository/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/Users/manu"/>
@@ -30,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire/surefirebooter-20260519174602343_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire/surefirebooter-20260520110022422_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="23.0.2"/>
@@ -59,17 +60,20 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="test_ModificaDatiVincoli" classname="catering.businesslogic.event.GestireEventiTest" time="0.016"/>
-  <testcase name="test3_AssegnaPersonale" classname="catering.businesslogic.event.GestireEventiTest" time="0.012"/>
-  <testcase name="test_AnnullamentoEventoPreliminare" classname="catering.businesslogic.event.GestireEventiTest" time="0.008"/>
-  <testcase name="test_ModificaRicorrenza" classname="catering.businesslogic.event.GestireEventiTest" time="0.055"/>
-  <testcase name="test_EliminazioneEvento" classname="catering.businesslogic.event.GestireEventiTest" time="0.007"/>
-  <testcase name="test_InserisciDerogaPenale" classname="catering.businesslogic.event.GestireEventiTest" time="0.005"/>
-  <testcase name="test_TerminazioneEvento" classname="catering.businesslogic.event.GestireEventiTest" time="0.023"/>
-  <testcase name="test3_ApprovaMenu" classname="catering.businesslogic.event.GestireEventiTest" time="0.022"/>
-  <testcase name="test1_CreaSchedaEvento" classname="catering.businesslogic.event.GestireEventiTest" time="0.007"/>
-  <testcase name="test2_InserisciDati" classname="catering.businesslogic.event.GestireEventiTest" time="0.02"/>
-  <testcase name="test_AnnullamentoEventoInCorso" classname="catering.businesslogic.event.GestireEventiTest" time="0.011"/>
-  <testcase name="test5_ConfermaEvento" classname="catering.businesslogic.event.GestireEventiTest" time="0.011"/>
-  <testcase name="test9_PropagazioneRicorrenza" classname="catering.businesslogic.event.GestireEventiTest" time="0.034"/>
+  <testcase name="test_ModificaDatiVincoli" classname="catering.businesslogic.event.GestireEventiTest" time="0.095">
+    <system-err><![CDATA[2026-05-20 11:00:24.083 [INFO] catering.persistence.PersistenceManager: Database initialized successfully from database/catering_init_sqlite.sql
+]]></system-err>
+  </testcase>
+  <testcase name="test3_AssegnaPersonale" classname="catering.businesslogic.event.GestireEventiTest" time="0.021"/>
+  <testcase name="test_AnnullamentoEventoPreliminare" classname="catering.businesslogic.event.GestireEventiTest" time="0.01"/>
+  <testcase name="test_ModificaRicorrenza" classname="catering.businesslogic.event.GestireEventiTest" time="0.087"/>
+  <testcase name="test_EliminazioneEvento" classname="catering.businesslogic.event.GestireEventiTest" time="0.01"/>
+  <testcase name="test_InserisciDerogaPenale" classname="catering.businesslogic.event.GestireEventiTest" time="0.007"/>
+  <testcase name="test_TerminazioneEvento" classname="catering.businesslogic.event.GestireEventiTest" time="0.025"/>
+  <testcase name="test3_ApprovaMenu" classname="catering.businesslogic.event.GestireEventiTest" time="0.046"/>
+  <testcase name="test1_CreaSchedaEvento" classname="catering.businesslogic.event.GestireEventiTest" time="0.011"/>
+  <testcase name="test2_InserisciDati" classname="catering.businesslogic.event.GestireEventiTest" time="0.029"/>
+  <testcase name="test_AnnullamentoEventoInCorso" classname="catering.businesslogic.event.GestireEventiTest" time="0.012"/>
+  <testcase name="test5_ConfermaEvento" classname="catering.businesslogic.event.GestireEventiTest" time="0.013"/>
+  <testcase name="test9_PropagazioneRicorrenza" classname="catering.businesslogic.event.GestireEventiTest" time="0.039"/>
 </testsuite>

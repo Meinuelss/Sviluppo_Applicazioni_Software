@@ -13,12 +13,14 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import catering.businesslogic.CatERing;
 import catering.businesslogic.UseCaseLogicException;
+import catering.persistence.PersistenceManager;
 
 class GestireEventiTest {
 
@@ -29,6 +31,12 @@ class GestireEventiTest {
     void setUp() {
         // Recuperiamo l'istanza corretta dell'EventManager dal sistema centrale
         eventMgr = CatERing.getInstance().getEventManager();
+    }
+
+    @BeforeAll
+    @SuppressWarnings("unused")
+    static void initializeDatabase() {
+        PersistenceManager.initializeDatabase("database/catering_init_sqlite.sql");
     }
 
     // --- DSD 1: CREA SCHEDA EVENTO ---
