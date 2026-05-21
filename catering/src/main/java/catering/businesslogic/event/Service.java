@@ -104,12 +104,24 @@ public class Service {
         this.menu = menu;
     }
 
-    public void approveMenu() {
-        if (this.menu == null)
-            return;
+    public void proposeMenu(Menu m) {
+        this.menu = m;
+        if (this.id > 0 && m != null) {
+            PersistenceManager.executeUpdate(
+                "UPDATE Services SET approved_menu_id = ? WHERE id = ?",
+                m.getId(), this.id);
+        }
+    }
 
-        String query = "UPDATE Services SET approved_menu_id = ? WHERE id = ?";
-        PersistenceManager.executeUpdate(query, this.menu.getId(), this.getId());
+    public void updateAssignmentsAfterMenuApproval() {
+        for (StaffAssignment ap : this.assignments) {
+            if (ap.isWaitingForMenu()) {
+                ap.setWaitingForMenu(false);
+            }
+            if (ap.needsReview()) {
+                ap.setReviewAssignment(false);
+            }
+        }
     }
 
     public void removeMenu() {

@@ -534,6 +534,15 @@ public class Menu {
         this.published = published;
     }
 
+    public void approve() {
+        this.published = true;
+        Menu.savePublished(this);
+    }
+
+    public boolean isApproved() {
+        return this.published;
+    }
+
     public boolean isInUse() {
         return this.inUse;
     }

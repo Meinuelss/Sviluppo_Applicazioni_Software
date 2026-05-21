@@ -32,6 +32,7 @@ public interface EventReceiver {
     void updateMenuMissing(Service service);
     void updateStaffAssigned(Service service, StaffAssignment ap);
     void updateEventConfirmed(Event e);
+    void updateModificationProposed(Event e, catering.businesslogic.menu.Menu m);
 
     //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     //Metodo per terminateEvent

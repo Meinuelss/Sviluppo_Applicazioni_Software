@@ -32,7 +32,8 @@ public class StaffAssignment {
     }
     //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     //Codice generato per eliminare warnings
-    public boolean isReviewAssignment() {
+
+    public boolean needsReview() {
         return reviewAssignment;
     }
 

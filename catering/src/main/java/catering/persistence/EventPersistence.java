@@ -75,6 +75,11 @@ public class EventPersistence implements EventReceiver {
         
     }
 
+    @Override
+    public void updateModificationProposed(Event e, Menu m) {
+        e.updateEvent();
+    }
+
     //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     // metodo per terminateEvent
     @Override

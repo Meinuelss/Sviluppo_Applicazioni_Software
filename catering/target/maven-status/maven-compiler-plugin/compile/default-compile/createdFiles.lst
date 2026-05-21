@@ -21,6 +21,7 @@ catering/businesslogic/event/StaffMember.class
 catering/businesslogic/kitchen/KitchenTaskManager.class
 catering/businesslogic/event/Event$2.class
 catering/businesslogic/menu/Menu$7.class
+catering/businesslogic/event/Documentation.class
 catering/businesslogic/shift/Shift.class
 catering/businesslogic/shift/ShiftManager.class
 catering/businesslogic/kitchen/Assignment.class
