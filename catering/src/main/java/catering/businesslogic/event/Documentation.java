@@ -1,5 +1,4 @@
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-//File creato nuovo per terminateEvent
+//Classe documentazione
 package catering.businesslogic.event;
 
 public class Documentation {

@@ -23,9 +23,7 @@ public class Service {
     private int eventId;
     private Menu menu;
 
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^
-    // Attributo per test3
-    private java.util.ArrayList<StaffAssignment> assignments = new java.util.ArrayList<>();
+    private ArrayList<StaffAssignment> assignments = new ArrayList<StaffAssignment>();
     private String type;
 
     public Service() {
@@ -35,7 +33,6 @@ public class Service {
         this.name = name;
     }
 
-    // Basic getters and setters
     public int getId() {
         return id;
     }
@@ -135,11 +132,9 @@ public class Service {
         return this.menu.getItems();
     }
 
-    // Database operations
     public void saveNewService() {
         String query = "INSERT INTO Services (event_id, name, service_date, time_start, time_end, location) VALUES (?, ?, ?, ?, ?, ?)";
 
-        // Convert date to timestamp for storage
         Long dateTimestamp = (this.getDate() != null) ? this.getDate().getTime() : null;
 
         PersistenceManager.executeUpdate(query,
@@ -150,7 +145,6 @@ public class Service {
                 this.getTimeEnd(),
                 this.getLocation());
 
-        // Get the ID of the newly inserted service
         this.setId(PersistenceManager.getLastId());
     }
 
@@ -187,7 +181,6 @@ public class Service {
         PersistenceManager.executeUpdate(query, this.getId());
     }
 
-    // Static methods for data loading
     @SuppressWarnings("Convert2Lambda")
     public static ArrayList<Service> loadServicesForEvent(int eventId) {
         ArrayList<Service> services = new ArrayList<>();
@@ -205,7 +198,6 @@ public class Service {
                     s.timeStart = Time.valueOf(rs.getString("time_start"));
                     s.timeEnd = Time.valueOf(rs.getString("time_end"));
                 } catch (IllegalArgumentException ex) {
-                    // Ignore parsing errors
                 }
 
                 s.location = rs.getString("location");
@@ -297,27 +289,22 @@ public class Service {
 
         Service other = (Service) obj;
 
-        // If both sections have valid IDs, compare by ID
         if (this.id > 0 && other.id > 0) {
             return this.id == other.id;
         }
 
-        // Otherwise, compare by name and items
         boolean nameMatch = (this.name == null && other.name == null) ||
                 (this.name != null && this.name.equals(other.name));
 
-        // If names don't match, sections are not equal
         if (!nameMatch)
             return false;
 
-        // If dates don't match, sections are not equal
         boolean dateMatch = (this.date == null && other.date == null) ||
                 (this.date != null && this.date.equals(other.date));
 
         if (!dateMatch)
             return false;
 
-        // If times don't match, sections are not equal
         boolean timeStartMatch = (this.timeStart == null && other.timeStart == null) ||
                 (this.timeStart != null && this.timeStart.equals(other.timeStart));
 
@@ -330,21 +317,18 @@ public class Service {
         if (!timeEndMatch)
             return false;
 
-        // If locations don't match, sections are not equal
         boolean locationMatch = (this.location == null && other.location == null) ||
                 (this.location != null && this.location.equals(other.location));
 
         if (!locationMatch)
             return false;
 
-        // If locations don't match, sections are not equal
         boolean menuMatch = (this.menu == null && other.menu == null) ||
                 (this.menu != null && this.menu.equals(other.menu));
 
         if (!menuMatch)
             return false;
 
-        // If events don't match, sections are not equal
         if (this.eventId > 0 && other.eventId > 0) {
             return this.eventId == other.eventId;
         }
@@ -352,9 +336,8 @@ public class Service {
         return true;
     }
 
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    // aggiunto metodo per test3
-    public java.util.ArrayList<StaffAssignment> getAssignments() {
+
+    public ArrayList<StaffAssignment> getAssignments() {
         return this.assignments;
     }
 
@@ -366,8 +349,6 @@ public class Service {
         this.assignments.add(ap);
     }
 
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    // Codice generato per eliminare warnings
     public void setAssignments(ArrayList<StaffAssignment> assignments) {
         this.assignments = assignments;
     }
@@ -377,9 +358,4 @@ public class Service {
         return type;
     }
 
-    @Override
-    public int hashCode() {
-        // Se la classe usa 'id' per l'equals, usiamo 'id' anche per l'hashCode
-        return java.util.Objects.hash(this.id);
-    }
 }

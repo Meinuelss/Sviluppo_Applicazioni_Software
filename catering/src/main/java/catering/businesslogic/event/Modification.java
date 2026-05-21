@@ -1,5 +1,4 @@
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-//File creato nuovo per il test3
+//Classe per rappresentare una proposta di modifica di un menù.
 package catering.businesslogic.event;
 
 import catering.businesslogic.menu.Menu;
@@ -25,8 +24,7 @@ public class Modification {
         this.event = e;
         this.menu = m;
     }
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //codice generato per eliminare warnings
+
     public Event getEvent() {
         return event;
     }

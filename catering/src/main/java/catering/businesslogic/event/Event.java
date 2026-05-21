@@ -21,31 +21,18 @@ public class Event {
     private User chef;
     private ArrayList<Service> services;
 
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    // attributi per il test1
+    // attributi aggiunti
     private String status;
-
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    // attributi per il test2
     private String clientData;
     private String location;
     private int numParticipants;
     private String notes;
     private Recurrence recurrenceObj;
     private boolean typeEvent; // true = complesso, false = semplice
-
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    // attributi per il test3
     private ArrayList<Modification> modifications = new ArrayList<>();
     private int chef_id = 0;
-
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    // attributi per il test4
     private boolean penalty;
     private String waiverReason;
-
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    // attributi per terminateEvent
     private ArrayList<Documentation> documentations = new ArrayList<>();
 
     public Event() {
@@ -61,7 +48,6 @@ public class Event {
         counter++;
     }
 
-    // Basic getters and setters
     public int getId() {
         return id;
     }
@@ -131,7 +117,6 @@ public class Event {
         this.services = services;
     }
 
-    // Service management
     public void addService(Service service) {
         if (services == null) {
             services = new ArrayList<>();
@@ -165,7 +150,6 @@ public class Event {
                 getChefId(), getTypeEvent(), status, clientData, location, numParticipants,
                 notes, penalty, waiverReason, recId);
 
-        // Get the ID of the newly inserted event
         id = PersistenceManager.getLastId();
 
     }
@@ -188,13 +172,11 @@ public class Event {
     }
 
     public boolean deleteEvent() {
-        // Delete all services first
         for (Service service : services) {
             service.deleteService();
         }
         services.clear();
 
-        // Delete the event
         String query = "DELETE FROM Events WHERE id = ?";
         boolean success = PersistenceManager.executeUpdate(query, id) > 0;
 
@@ -230,7 +212,6 @@ public class Event {
             }
         });
 
-        // Load services for each event
         for (Event e : events) {
             e.services = Service.loadServicesForEvent(e.id);
         }
@@ -304,8 +285,6 @@ public class Event {
                 ", services=" + (services != null ? services.size() : 0) + "]";
     }
 
-    // ^^^^^^^^^^^^^
-    // aggiunta metodi per test1
 
     public String getStatus() {
         return status;
@@ -314,9 +293,6 @@ public class Event {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    // ^^^^^^^^^^^^^
-    // aggiunta metodi per test2
 
     public String getClientData() {
         return clientData;
@@ -371,8 +347,6 @@ public class Event {
         this.dateEnd = endDate;
     }
 
-    // ^^^^^^^^^^^^^
-    // aggiunta metodi per test3
     public void addModification(Modification mod) {
         this.modifications.add(mod);
     }
@@ -386,18 +360,14 @@ public class Event {
     }
 
     public boolean hasChef() {
-        // Usa chef_id se mappato con l'intero, oppure this.chef != null se usi
-        // l'oggetto
         return this.chef_id > 0 || this.chef != null;
     }
 
+    // Un evento è valido se ha sia servizi che uno chef
     public boolean isValid() {
-        // Un evento è valido se ha sia servizi che uno chef
         return this.hasServices() && this.hasChef();
     }
 
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    // Codice generato per risolvere i warnings
     public void setModifications(ArrayList<Modification> modifications) {
         this.modifications = modifications;
     }
@@ -414,9 +384,6 @@ public class Event {
         this.chef_id = chef_id;
         this.chef = user;
     }
-
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    // Aggiunta metodi per test4
 
     public boolean hasPenalty() {
         return penalty;
@@ -437,29 +404,18 @@ public class Event {
     // metodo oer verificare se la modifica al numero di partecipanti è valida
     // (entro il 30% del numero attuale)
     public boolean canModifyParticipants(int newNum) {
-        // Se l'evento non aveva ancora partecipanti (es. appena creato), la modifica è
-        // sempre valida
         if (this.numParticipants == 0) {
             return true;
         }
 
-        // Calcoliamo la differenza assoluta tra il vecchio e il nuovo numero
         double variazioneAssoluta = Math.abs(newNum - this.numParticipants);
-
-        // Calcoliamo la soglia massima consentita (30% del numero attuale)
         double sogliaMassima = this.numParticipants * 0.30;
 
-        // Ritorna true se la variazione è entro la soglia
         return variazioneAssoluta <= sogliaMassima;
     }
 
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    // Aggiunta metodi per terminateEvent
-
     /**
      * Segna l'evento come chiuso, salvando le note storiche.
-     * Come da contratto chiudiEvento: e.note = noteStoriche
-     * (il modello ha un singolo attributo notes, scelta di modellazione dichiarata)
      */
     public void markAsClosed(String historicalNotes) {
         this.notes = historicalNotes;
@@ -468,7 +424,6 @@ public class Event {
 
     /**
      * Allega una documentazione all'evento.
-     * Come da DCD: attachDocumentation(doc: Documentation)
      */
     public void attachDocumentation(Documentation doc) {
         if (this.documentations == null) {

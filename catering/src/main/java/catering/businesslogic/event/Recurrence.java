@@ -1,5 +1,4 @@
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-//File creato nuovo per il test2
+//Classe per gestire la ricorrenza degli eventi
 package catering.businesslogic.event;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -32,8 +31,6 @@ public class Recurrence {
         return this.generatedEvents;
     }
 
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //codice generato per correggere i warnings
     public void setFrequency(String frequency) {
         this.frequency = frequency;
     }
@@ -42,7 +39,6 @@ public class Recurrence {
         this.conclusion = conclusion;
     }
 
-    // Database operations
     public void saveNewRecurrence() {
         String query = "INSERT INTO Recurrences (frequency, conclusion) VALUES (?, ?)";
         catering.persistence.PersistenceManager.executeUpdate(query, frequency, conclusion);

@@ -1,5 +1,4 @@
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-//File creato nuovo per il test3
+//Classe che rappresenta un membro dello staff, con nome e disponibilità
 package catering.businesslogic.event;
 
 public class StaffMember {
@@ -14,8 +13,7 @@ public class StaffMember {
     public String getName() { return name; }
     public boolean isAvailable() { return available; }
     public void setAvailable(boolean available) { this.available = available; }
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //Codice generato per correggere i warnings
+
     public void setName(String name) {
         this.name = name;
     }

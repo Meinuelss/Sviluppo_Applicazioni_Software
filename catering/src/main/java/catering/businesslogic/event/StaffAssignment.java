@@ -1,5 +1,4 @@
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-//File creato nuovo per il test3
+//Classe per la gestione dell'assegnamento del personale
 package catering.businesslogic.event;
 
 public class StaffAssignment {
@@ -30,8 +29,6 @@ public class StaffAssignment {
     public void setWaitingForMenu(boolean waitingForMenu) { 
         this.waitingForMenu = waitingForMenu; 
     }
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    //Codice generato per eliminare warnings
 
     public boolean needsReview() {
         return reviewAssignment;
