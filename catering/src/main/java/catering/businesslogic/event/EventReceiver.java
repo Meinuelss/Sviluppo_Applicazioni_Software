@@ -27,10 +27,10 @@ public interface EventReceiver {
     void updateMenuRemoved(Service service);
 
     //metodi update aggiunti da noi
-    void updateMenuApproved(Event e, catering.businesslogic.menu.Menu m);
+    void updateMenuApproved(Event e, Menu m);
     void updateMenuMissing(Service service);
     void updateStaffAssigned(Service service, StaffAssignment ap);
     void updateEventConfirmed(Event e);
-    void updateModificationProposed(Event e, catering.businesslogic.menu.Menu m);
+    void updateModificationProposed(Event e, Menu m);
     void updateEventClosed(Event e);
 }

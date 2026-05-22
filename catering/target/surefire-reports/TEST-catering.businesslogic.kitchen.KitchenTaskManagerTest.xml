@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.335" tests="7" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.351" tests="7" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -13,7 +13,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IT"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/23.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire/surefirebooter-20260521161429529_3.jar /Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire 2026-05-21T16-14-29_407-jvmRun1 surefire-20260521161429529_1tmp surefire_0-20260521161429529_2tmp"/>
+    <property name="sun.java.command" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire/surefirebooter-20260522141717711_3.jar /Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire 2026-05-22T14-17-17_626-jvmRun1 surefire-20260522141717711_1tmp surefire_0-20260522141717711_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/test-classes:/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/classes:/Users/manu/.m2/repository/org/xerial/sqlite-jdbc/3.49.1.0/sqlite-jdbc-3.49.1.0.jar:/Users/manu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.12.2/junit-jupiter-api-5.12.2.jar:/Users/manu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/manu/.m2/repository/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.jar:/Users/manu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/manu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.12.2/junit-jupiter-engine-5.12.2.jar:/Users/manu/.m2/repository/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.jar:"/>
@@ -30,7 +30,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire/surefirebooter-20260521161429529_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/target/surefire/surefirebooter-20260522141717711_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="23.0.2"/>
@@ -59,14 +59,14 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testGenerateSummarySheet_NonChefCaller_ThrowsUseCaseLogicException" classname="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.053">
-    <system-err><![CDATA[2026-05-21 16:14:31.659 [INFO] catering.persistence.PersistenceManager: Database initialized successfully from database/catering_init_sqlite.sql
+  <testcase name="testGenerateSummarySheet_NonChefCaller_ThrowsUseCaseLogicException" classname="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.051">
+    <system-err><![CDATA[2026-05-22 14:17:19.935 [INFO] catering.persistence.PersistenceManager: Database initialized successfully from database/catering_init_sqlite.sql
 ]]></system-err>
   </testcase>
-  <testcase name="testGenerateSummarySheet_ChefNotEventChef_ThrowsUseCaseLogicException" classname="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.035"/>
-  <testcase name="testGenerateSummarySheet_HappyPath_OneTaskPerKitchenProcess" classname="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.044"/>
-  <testcase name="testGenerateSummarySheet_ServiceWithoutMenu_ThrowsUseCaseLogicException" classname="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.026"/>
-  <testcase name="testGenerateSummarySheet_NullEvent_ThrowsUseCaseLogicException" classname="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.026"/>
+  <testcase name="testGenerateSummarySheet_ChefNotEventChef_ThrowsUseCaseLogicException" classname="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.029"/>
+  <testcase name="testGenerateSummarySheet_HappyPath_OneTaskPerKitchenProcess" classname="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.047"/>
+  <testcase name="testGenerateSummarySheet_ServiceWithoutMenu_ThrowsUseCaseLogicException" classname="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.028"/>
+  <testcase name="testGenerateSummarySheet_NullEvent_ThrowsUseCaseLogicException" classname="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.024"/>
   <testcase name="testGenerateSummarySheet_ServiceNotInEvent_ThrowsUseCaseLogicException" classname="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.025"/>
-  <testcase name="testGenerateSummarySheet_NullService_ThrowsUseCaseLogicException" classname="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.022"/>
+  <testcase name="testGenerateSummarySheet_NullService_ThrowsUseCaseLogicException" classname="catering.businesslogic.kitchen.KitchenTaskManagerTest" time="0.028"/>
 </testsuite>
