@@ -228,7 +228,7 @@ fg=gray</panel_attributes><additional_attributes>10;60;10;30;110;30;110;10</addi
 -notifySheetGenerated(sheet: SummarySheet)
 --
 +generateSummarySheet(event: Event, service: Service): SummarySheet</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>784</x><y>120</y><w>112</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-m1=1..n
+m1=0..n
 m2=1
 services/contains</panel_attributes><additional_attributes>120;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>872</x><y>328</y><w>232</w><h>192</h></coordinates><panel_attributes>StaffAssignment
 --
@@ -349,12 +349,12 @@ fg=black
 + getConclusion(): Date
 + addGeneratedEvent(e: Event)
 + getGeneratedEvents(): ArrayList&lt;Event&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>696</x><y>632</y><w>176</w><h>264</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..1
+m2=1
+generatedby</panel_attributes><additional_attributes>200;300;10;300;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>752</x><y>632</y><w>160</w><h>184</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..n
-m2=0..n
-generatedby</panel_attributes><additional_attributes>200;300;10;300;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>728</x><y>632</y><w>216</w><h>176</h></coordinates><panel_attributes>lt=&lt;-
-m1=0..n
-m2=0..n
-generates</panel_attributes><additional_attributes>230;200;230;110;10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>784</x><y>152</y><w>112</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+m2=0..1
+generates</panel_attributes><additional_attributes>10;10;10;200;180;200</additional_attributes></element><element><id>Relation</id><coordinates><x>784</x><y>152</y><w>112</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
 m1=1
 m2=0..n
 related to</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>920</y><w>144</w><h>80</h></coordinates><panel_attributes>Modification
