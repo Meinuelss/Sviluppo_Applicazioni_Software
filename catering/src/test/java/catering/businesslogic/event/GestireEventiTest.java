@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -43,7 +42,7 @@ class GestireEventiTest {
         }
 
         @Test
-        @DisplayName("DSD 1: Crea scheda evento (Controllo Organizzatore e Titolo opzionale)")
+        //DSD 1: Crea scheda evento (Controllo Organizzatore e Titolo opzionale
         void test1_CreaSchedaEvento() throws Exception {
             CatERing.getInstance().getUserManager().fakeLogin("Luca");
 
@@ -72,7 +71,7 @@ class GestireEventiTest {
         }
 
         @Test
-        @DisplayName("DSD 2: Inserisci i dati, verifica permessi e genera Ricorrenza")
+        //DSD 2: Inserisci i dati, verifica permessi e genera Ricorrenza
         void test2_InserisciDati() throws Exception {
             CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
             eventMgr.createEventCard("Meeting Aziendale");
@@ -117,7 +116,7 @@ class GestireEventiTest {
         }
 
         @Test
-        @DisplayName("EST 2D: Modifica Dati con applicazione Penale per >30% e blocco In Corso")
+        //EST 2D: Modifica Dati con applicazione Penale per >30% e blocco In Corso
         void test_ModificaDatiVincoli() throws Exception {
             CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
 
@@ -161,7 +160,7 @@ class GestireEventiTest {
         }
 
         @Test
-        @DisplayName("DSD 3: Approva Menu — percorso diretto (senza modifiche) e con modifiche + accettazione chef")
+        //DSD 3: Approva Menu — percorso diretto (senza modifiche) e con modifiche + accettazione chef
         void test3_ApprovaMenu() throws Exception {
             CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
             eventMgr.createEventCard("Cena di Gala del Personale");
@@ -238,7 +237,7 @@ class GestireEventiTest {
         }
 
         @Test
-        @DisplayName("TEST 3: Assegna Personale con controllo Organizzatore, Disponibilità e Menu")
+        //TEST 3: Assegna Personale con controllo Organizzatore, Disponibilità e Menu
         void test3_AssegnaPersonale() throws Exception {
             CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
             eventMgr.createEventCard("Buffet Estivo");
@@ -292,7 +291,7 @@ class GestireEventiTest {
         }
 
         @Test
-        @DisplayName("TEST 5: Conferma Evento con controlli su stato, servizi e chef")
+        //TEST 5: Conferma Evento con controlli su stato, servizi e chef
         void test5_ConfermaEvento() throws Exception {
             CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
             eventMgr.createEventCard("Festa di Fine Anno");
@@ -330,7 +329,7 @@ class GestireEventiTest {
         }
 
         @Test
-        @DisplayName("ECC 7a.1a: Inserisci Deroga Penale con annullamento della penale")
+        //ECC 7a.1a: Inserisci Deroga Penale con annullamento della penale
         void test_InserisciDerogaPenale() throws Exception {
             CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
             eventMgr.createEventCard("Cena di Gala di Prova");
@@ -350,7 +349,7 @@ class GestireEventiTest {
         }
 
         @Test
-        @DisplayName("Annullamento evento Preliminare: Nessuna penale applicata a prescindere dai parametri")
+        //Annullamento evento Preliminare: Nessuna penale applicata a prescindere dai parametri
         void test_AnnullamentoEventoPreliminare() throws Exception {
             CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
 
@@ -369,7 +368,7 @@ class GestireEventiTest {
         }
 
         @Test
-        @DisplayName("EST 7a: Annullamento evento In Corso con scelta tra Penale o Deroga")
+        //EST 7a: Annullamento evento In Corso con scelta tra Penale o Deroga
         void test_AnnullamentoEventoInCorso() throws Exception {
             CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
 
@@ -401,7 +400,7 @@ class GestireEventiTest {
         }
 
         @Test
-        @DisplayName("Eliminazione evento: Permessa solo in fase Preliminare")
+        //Eliminazione evento: Permessa solo in fase Preliminare
         void test_EliminazioneEvento() throws Exception {
             CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
 
@@ -424,7 +423,7 @@ class GestireEventiTest {
         }
 
         @Test
-        @DisplayName("Terminazione Evento: Permessa solo in stato Confermato/In Corso, con note storiche e documentazione")
+        //Terminazione Evento: Permessa solo in stato Confermato/In Corso, con note storiche e documentazione
         void test_TerminazioneEvento() throws Exception {
             CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
             eventMgr.createEventCard("Evento da Terminare");
@@ -505,7 +504,7 @@ class GestireEventiTest {
         }
 
         @Test
-        @DisplayName("Modifica Ricorrenza: riutilizza istanze preliminari, crea nuove se necessario, rimuove le eccedenti")
+        //Modifica Ricorrenza: riutilizza istanze preliminari, crea nuove se necessario, rimuove le eccedenti
         void test_ModificaRicorrenza() throws Exception {
             CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
 
@@ -564,7 +563,7 @@ class GestireEventiTest {
         }
 
         @Test
-        @DisplayName("Propagazione Modifiche Ricorrenza (modifyEventData, cancelEvent, deleteCurrentEvent)")
+        //Propagazione Modifiche Ricorrenza (modifyEventData, cancelEvent, deleteCurrentEvent)
         void test9_PropagazioneRicorrenza() throws Exception {
             CatERing.getInstance().getUserManager().fakeLogin("Giovanni");
 
