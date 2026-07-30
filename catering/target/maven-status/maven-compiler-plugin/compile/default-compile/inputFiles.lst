@@ -1,36 +1,36 @@
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/util/LogManager.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/UseCaseLogicException.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/shift/ShiftManager.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/EventReceiver.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/menu/Menu.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/menu/MenuItem.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/EventManager.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/shift/Shift.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/Event.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/StaffAssignment.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/user/UserManager.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/kitchen/KitchenTask.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/persistence/EventPersistence.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/Documentation.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/kitchen/Assignment.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/persistence/ResultHandler.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/menu/Section.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/recipe/Preparation.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/recipe/KitchenProcess.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/kitchen/KitchenTaskManager.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/kitchen/SummarySheet.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/persistence/PersistenceManager.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/Recurrence.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/recipe/Recipe.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/CatERing.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/persistence/KitchenTaskPersistence.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/recipe/RecipeManager.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/user/User.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/StaffMember.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/menu/MenuEventReceiver.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/Service.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/persistence/BatchUpdateHandler.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/Modification.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/menu/MenuManager.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/persistence/MenuPersistence.java
-/Users/manu/Desktop/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/kitchen/KitchenTaskEventReceiver.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/persistence/KitchenTaskPersistence.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/EventReceiver.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/shift/ShiftManager.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/user/UserManager.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/EventManager.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/recipe/Recipe.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/recipe/KitchenProcess.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/recipe/Preparation.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/Documentation.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/Event.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/Modification.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/menu/Menu.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/persistence/EventPersistence.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/persistence/MenuPersistence.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/persistence/ResultHandler.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/persistence/BatchUpdateHandler.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/menu/MenuManager.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/Recurrence.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/recipe/RecipeManager.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/menu/MenuEventReceiver.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/StaffAssignment.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/CatERing.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/UseCaseLogicException.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/Service.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/kitchen/SummarySheet.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/kitchen/KitchenTask.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/kitchen/KitchenTaskManager.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/persistence/PersistenceManager.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/menu/MenuItem.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/kitchen/KitchenTaskEventReceiver.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/user/User.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/event/StaffMember.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/util/LogManager.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/menu/Section.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/shift/Shift.java
+/home/manu/Scrivania/01 Uni/III ANNO/II-SEMESTRE/SAS/Sviluppo_Applicazioni_Software/catering/src/main/java/catering/businesslogic/kitchen/Assignment.java
