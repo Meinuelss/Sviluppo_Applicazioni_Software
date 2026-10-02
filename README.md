@@ -32,7 +32,7 @@ Uno dei punti di forza di questo progetto è la documentazione. Nella cartella `
 * **DSD (Design Sequence Diagrams)** per la progettazione architetturale.
 * **DCD (Design Class Diagram)** per la struttura finale delle classi.
 
-## ⚙️ Installazione e Setup
+## Installazione e Setup
 
 1. **Clona il repository:**
    ```bash
@@ -49,7 +49,13 @@ Uno dei punti di forza di questo progetto è la documentazione. Nella cartella `
 4. **Database:**
    Il database SQLite (`catering.db`) e lo script di inizializzazione (`catering_init_sqlite.sql`) sono presenti nella cartella `database`.
 
-## 👨‍💻 Autore
+5. **Test ed esecuzione:**
+   ```bash
+   mvn test
+   mvn exec:java
+   ```
+      
+## Autore
 
 * **Serranò Manuel e Riccioni Tommaso** - *Sviluppatore / Studente* *
 
